@@ -128,8 +128,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 80298983}
+  - component: {fileID: 80298984}
   - component: {fileID: 80298982}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,6 +180,18 @@ Transform:
   - {fileID: 1201674776}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &80298984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80298981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 798fd3e30baea5a4c9da0c65d86c8e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMarker
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,7 +562,7 @@ GameObject:
   - component: {fileID: 1201674776}
   - component: {fileID: 1201674778}
   - component: {fileID: 1201674777}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pigeon_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
