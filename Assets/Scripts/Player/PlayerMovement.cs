@@ -4,6 +4,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private KeyCode Jump = KeyCode.Space;
+    [SerializeField] private KeyCode Crouch = KeyCode.S;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform feetPos;
     [SerializeField] private LayerMask groundLayer;
@@ -13,12 +14,32 @@ public class PlayerMovement : MonoBehaviour
     private float jumpTimer; //mide cuanto tiempo sostengo la tecla
     private bool isGrounded = false;
     private bool isJumping = false;
+
+    [Header("Visuals")]
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite normalSprite;
+    [SerializeField] private Sprite crouchSprite;
+
+    [Header("Crouch Collider")]
+    [SerializeField] private BoxCollider2D playerCollider;
+    [SerializeField] private Vector2 crouchColliderSize;
+    [SerializeField] private Vector2 crouchColliderOffset;
+
+    private Vector2 normalColliderSize;
+    private Vector2 normalColliderOffset;
+    private bool isCrouching = false;
+    private void Awake()
+    {
+        spriteRenderer.sprite = normalSprite;
+        normalColliderSize = playerCollider.size;
+        normalColliderOffset = playerCollider.offset;
+    }
     private void Update()
     {
         isGrounded = Physics2D.OverlapCircle(feetPos.position, groundDistance, groundLayer);
                                        //dibuja un circulo en feetPos.position con la distancia de ground Distance y checa si hay algo de 
-
-        if (isGrounded && Input.GetButtonDown("Jump"))
+// Jumping
+        if (isGrounded && Input.GetKeyDown(Jump))
         {
             isJumping = true;
             jumpTimer = 0f;
@@ -26,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        if (isJumping && Input.GetButton("Jump"))
+        if (isJumping && Input.GetKey(Jump))
         {
             if (jumpTimer < jumpTime) 
             {
@@ -39,9 +60,24 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonUp("Jump"))
+        if (Input.GetKeyUp(Jump))
         {
             isJumping = false;
+        }
+        if (isGrounded && Input.GetKeyDown(Crouch))
+        {
+            isCrouching = true;
+            spriteRenderer.sprite = crouchSprite;
+            playerCollider.size = crouchColliderSize;
+            playerCollider.offset = crouchColliderOffset;
+        }
+
+        if (isCrouching && Input.GetKeyUp(Crouch))
+        {
+            isCrouching = false;
+            spriteRenderer.sprite = normalSprite;
+            playerCollider.size = normalColliderSize;
+            playerCollider.offset = normalColliderOffset;
         }
     }
 }
