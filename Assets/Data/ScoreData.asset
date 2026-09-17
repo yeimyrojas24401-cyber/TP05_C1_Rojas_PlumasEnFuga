@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 970db1aa042a80b4498f2ad8df50620c, type: 3}
-  m_Name: Player
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerDataSo
-  jump: 119
-  crouch: 115
-  jumpForce: 10
-  jumpTime: 0.5
+  m_Script: {fileID: 11500000, guid: c452b7acf3e46a44d823a9169360e917, type: 3}
+  m_Name: ScoreData
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreData
+  currentScore: 0
+  highScore: 0
