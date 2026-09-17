@@ -8,6 +8,6 @@ public class PlayerDataSo : ScriptableObject
     public KeyCode crouch = KeyCode.S;
 
     [Header("Jumping")]
-    public float jumpForce = 10f;
-    public float jumpTime = 0.3f;
+    public float jumpForce = 10f; //fuerza de salto
+    public float jumpTime = 0.3f; //tiempo maximo que dura en el aire
 }
