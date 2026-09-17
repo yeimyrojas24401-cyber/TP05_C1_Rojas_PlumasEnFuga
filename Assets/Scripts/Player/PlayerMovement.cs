@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Movement")]
-    [SerializeField] private KeyCode Jump = KeyCode.Space;
-    [SerializeField] private KeyCode Crouch = KeyCode.S;
+    [Header("Data")]
+    [SerializeField] private PlayerDataSo data;
+    [Header("Settings")]
+
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform feetPos;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float groundDistance = 0.25f;
-    [SerializeField] private float jumpForce = 10f;
-    [SerializeField] private float jumpTime = 0.3f; //tiempo maximo que dura en el aire
+
     private float jumpTimer; //mide cuanto tiempo sostengo la tecla
     private bool isGrounded = false;
     private bool isJumping = false;
@@ -39,19 +39,19 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(feetPos.position, groundDistance, groundLayer);
                                        //dibuja un circulo en feetPos.position con la distancia de ground Distance y checa si hay algo de 
 // Jumping
-        if (isGrounded && Input.GetKeyDown(Jump))
+        if (isGrounded && Input.GetKeyDown(data.jump))
         {
             isJumping = true;
             jumpTimer = 0f;
-            rb.linearVelocity = Vector2.up * jumpForce; //agrega una velocidad lineal que sera impulsada por mi fuerza de salto inicial
+            rb.linearVelocity = Vector2.up * data.jumpForce; //agrega una velocidad lineal que sera impulsada por mi fuerza de salto inicial
 
         }
 
-        if (isJumping && Input.GetKey(Jump))
+        if (isJumping && Input.GetKey(data.jump))
         {
-            if (jumpTimer < jumpTime) 
+            if (jumpTimer < data.jumpTime) 
             {
-                rb.linearVelocity = Vector2.up * jumpForce; 
+                rb.linearVelocity = Vector2.up * data.jumpForce; 
                 jumpTimer += Time.deltaTime; //al sumar el time.deltaTime asegura que jumpTimer en algun momento llegue a ser igual al jumpTimer y eso trae por consecuencia que isJumping = false
             }
             else
@@ -60,11 +60,11 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyUp(Jump))
+        if (Input.GetKeyUp(data.jump))
         {
             isJumping = false;
         }
-        if (isGrounded && Input.GetKeyDown(Crouch))
+        if (isGrounded && Input.GetKeyDown(data.crouch))
         {
             isCrouching = true;
             spriteRenderer.sprite = crouchSprite;
@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
             playerCollider.offset = crouchColliderOffset;
         }
 
-        if (isCrouching && Input.GetKeyUp(Crouch))
+        if (isCrouching && Input.GetKeyUp(data.crouch))
         {
             isCrouching = false;
             spriteRenderer.sprite = normalSprite;

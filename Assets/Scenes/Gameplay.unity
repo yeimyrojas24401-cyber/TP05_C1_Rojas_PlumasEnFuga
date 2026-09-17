@@ -207,16 +207,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 953efb3fd1ed0554faf2d315f688559f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  Jump: 273
-  Crouch: 274
+  data: {fileID: 11400000, guid: 467865f62c5694b4998a484d5150020e, type: 2}
   rb: {fileID: 80298982}
   feetPos: {fileID: 1061196071}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   groundDistance: 0.25
-  jumpForce: 10
-  jumpTime: 0.5
   spriteRenderer: {fileID: 1201674778}
   normalSprite: {fileID: 9046215376232531194, guid: a32f67bbf11e77149849f8bf5fb060d6, type: 3}
   crouchSprite: {fileID: 1634962700676060890, guid: 8621f9075ee173042bdcc85f66611347, type: 3}
@@ -755,7 +752,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 9046215376232531194, guid: a32f67bbf11e77149849f8bf5fb060d6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
