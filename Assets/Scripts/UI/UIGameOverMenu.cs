@@ -9,8 +9,7 @@ public class UIGameOverMenu : MonoBehaviour
     [SerializeField] private Button btnMainMenu;
     [SerializeField] private Button btnExit;
     [SerializeField] private GameManager gameManager;
-    [SerializeField] private TMP_Text highScoreLabel;
-    [SerializeField] private TMP_Text currentScoreLabel;
+
 
     private void Awake()
     {

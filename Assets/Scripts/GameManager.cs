@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private ScoreData scoreData;
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject scoreLabel;
     [SerializeField] private TMP_Text finalScoreText;
     [SerializeField] private TMP_Text finalHighScoreText;
     
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         scoreData.SaveHighScore();
+        scorePanel.SetActive(false);
         finalScoreText.text = "Score: " + scoreData.CurrentScore;
         finalHighScoreText.text = "Record: " + scoreData.CurrentScore;
         Time.timeScale = 0f;
