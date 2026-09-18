@@ -7,6 +7,7 @@ public class PlayerCollisionHandle : MonoBehaviour
         if (collision.gameObject.GetComponent<ObstacleMarker>() != null)
         {
             Destroy(gameObject);
+            FindObjectOfType<GameManager>().GameOver();
         }
     }
 }

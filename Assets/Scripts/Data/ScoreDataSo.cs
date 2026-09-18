@@ -26,7 +26,21 @@ public class ScoreData : ScriptableObject
             highScore = currentScore; //actualizamos
             OnNewHighScore?.Invoke(highScore); //avisamos que hay un nuevo record
         }
-
-
+    }
+    public void ResetScore()
+    {
+        currentScore = 0; //cuando lo llame va a resetear el currentScore
+        OnScoreChanged?.Invoke(currentScore); //Da el aviso que ya ha cambiado y que ahora el valor 
+                                              //int es 0
+    }
+    public void LoadHighScore() //traer el record guardado en el disco y lo carga en memoria 
+    {
+        highScore = PlayerPrefs.GetInt("HighScore", 0); //use get int para guardar el int que encuentre bajo
+                                                        //el nombre de HighScore, el 0 es mi valor por defecto
+    }
+    public void SaveHighScore()
+    {
+        PlayerPrefs.SetInt("HighScore", highScore); //guardamos el valor actual con la clave HighScore
+        PlayerPrefs.Save(); //esto fuerza a Unity a que escriba los datos a disco 
     }
 }
