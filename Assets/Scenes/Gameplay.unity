@@ -176,7 +176,7 @@ Transform:
   m_GameObject: {fileID: 80298981}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: -3.11, z: 0}
+  m_LocalPosition: {x: -6, y: -3.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -736,8 +736,8 @@ MonoBehaviour:
   - {fileID: 6363293850746731292, guid: 51f7acd748cb5cd469d895a7e499da0e, type: 3}
   - {fileID: 4473581321068926153, guid: d3171781ba3dc274f8e75df5d51ce456, type: 3}
   - {fileID: 7230654774945197108, guid: 0476176a6b0fd864cad0057f0f0fad4f, type: 3}
-  obstacleSpawnTime: 3
-  obstacleSpeed: 5
+  obstacleSpawnTime: 2
+  obstacleSpeed: 6
 --- !u!1 &485916111
 GameObject:
   m_ObjectHideFlags: 0
