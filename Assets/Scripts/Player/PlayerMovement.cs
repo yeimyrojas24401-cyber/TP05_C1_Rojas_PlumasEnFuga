@@ -11,6 +11,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float groundDistance = 0.25f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip jumpClip;
+
     private float jumpTimer; //mide cuanto tiempo sostengo la tecla
     private bool isGrounded = false;
     private bool isJumping = false;
@@ -44,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
             isJumping = true;
             jumpTimer = 0f;
             rb.linearVelocity = Vector2.up * data.jumpForce; //agrega una velocidad lineal que sera impulsada por mi fuerza de salto inicial
-
+            audioSource.PlayOneShot(jumpClip);
         }
 
         if (isJumping && Input.GetKey(data.jump))
