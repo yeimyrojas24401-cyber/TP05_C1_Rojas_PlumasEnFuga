@@ -21,9 +21,9 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         scoreData.SaveHighScore();
-        scorePanel.SetActive(false);
+        scoreLabel.SetActive(false);
         finalScoreText.text = "Score: " + scoreData.CurrentScore;
-        finalHighScoreText.text = "Record: " + scoreData.CurrentScore;
+        finalHighScoreText.text = "Record: " + scoreData.HighScore;
         Time.timeScale = 0f;
         gameOverPanel.SetActive(true);
 
