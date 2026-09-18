@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(fileName = "ScoreDataSo", menuName = "Game/Score Data")]
+[CreateAssetMenu(fileName = "ScoreDataSo", menuName = "Data/Game/Score Data")]
 public class ScoreData : ScriptableObject
 {
     [SerializeField] private int currentScore;
