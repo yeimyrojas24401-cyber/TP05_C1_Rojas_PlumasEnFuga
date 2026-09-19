@@ -5871,8 +5871,11 @@ MonoBehaviour:
   - {fileID: 6363293850746731292, guid: 51f7acd748cb5cd469d895a7e499da0e, type: 3}
   - {fileID: 4473581321068926153, guid: d3171781ba3dc274f8e75df5d51ce456, type: 3}
   - {fileID: 7230654774945197108, guid: 0476176a6b0fd864cad0057f0f0fad4f, type: 3}
-  obstacleSpawnTime: 2
-  obstacleSpeed: 6
+  baseObstacleSpeed: 10
+  speedIncreasePerSecond: 0.2
+  minSpawnTime: 2
+  minDistanceBetweenObstacles: 10
+  maxDistanceBetweenObstacles: 50
 --- !u!1 &485916111
 GameObject:
   m_ObjectHideFlags: 0
@@ -8340,6 +8343,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ButtonClickSound
   audioSource: {fileID: 326548326}
   clickClip: {fileID: 8300000, guid: ee50ccad4cb30d748addd9a7275fce93, type: 3}
+--- !u!1 &1654035409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1654035411}
+  - component: {fileID: 1654035410}
+  m_Layer: 0
+  m_Name: PowerUpSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1654035410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654035409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e2924d15a46e61468657ac10e07cd07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PowerUpSpawner
+  powerUpPrefabs:
+  - {fileID: 9089249711366851349, guid: c721707e7a4d23741a4ab37285d947a6, type: 3}
+  spawnTime: 30
+  moveSpeed: 1
+--- !u!4 &1654035411
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654035409}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.23, y: 0.07878, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1747597565 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3171509159615322298, guid: 7c19de3a5207d794c879b43125d3342e, type: 3}
@@ -8570,6 +8621,7 @@ SceneRoots:
   - {fileID: 536566229}
   - {fileID: 80298983}
   - {fileID: 483981656}
+  - {fileID: 1654035411}
   - {fileID: 1136511988}
   - {fileID: 1166762126}
   - {fileID: 485916115}

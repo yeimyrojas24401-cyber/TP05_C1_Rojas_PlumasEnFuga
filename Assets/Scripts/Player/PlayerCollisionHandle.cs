@@ -9,5 +9,15 @@ public class PlayerCollisionHandle : MonoBehaviour
             Destroy(gameObject);
             Object.FindFirstObjectByType<GameManager>().GameOver();
         }
+
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.GetComponent<PowerUpMarker>() != null)
+        {
+            Destroy(other.gameObject);
+            Object.FindFirstObjectByType<ObstacleSpawner>().TriggerSlowEffect(25f);
+            Debug.Log("Trigger colisionado");
+        }
     }
 }

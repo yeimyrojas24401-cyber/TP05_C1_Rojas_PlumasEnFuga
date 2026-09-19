@@ -1,24 +1,55 @@
 using UnityEngine;
+using System.Collections;
+using UnityEngine.Events;
 
 public class ObstacleSpawner: MonoBehaviour
 {
+    [Header("Prefabs")]
     [SerializeField] private GameObject[] obstaclePrefabs;
-    public float obstacleSpawnTime = 2.0f;
+
+    [Header("Base Difficulty")]
+    [SerializeField] private float baseObstacleSpeed = 10f;
+
+    [Header("Difficulty Ramp")]
+    [SerializeField] private float speedIncreasePerSecond = 0.02f;
+    [SerializeField] private float minSpawnTime = 0.6f; //tiempo limite de spawneo con power
+    [SerializeField] private float minDistanceBetweenObstacles = 20f;
+    [SerializeField] private float maxDistanceBetweenObstacles = 50f;
+ 
     private float timeUntilObstacleSpawn;
+    private float elapsedTime;
+    private float currentSpawnTimeTarget;
 
-    public float obstacleSpeed = 1.0f;
+    private float speedMultiplier = 1f;
+    private float spawnTimeMultiplier = 1f;
 
+    private float CurrentBaseSpeed => baseObstacleSpeed + (elapsedTime * speedIncreasePerSecond);
+    private float CurrentBaseSpawnTime => Mathf.Max(minSpawnTime,Random.Range(minDistanceBetweenObstacles, maxDistanceBetweenObstacles) / CurrentBaseSpeed);
+    private float CurrentObstacleSpeed => CurrentBaseSpeed * speedMultiplier;
+    private float CurrentSpawnTime => CurrentBaseSpawnTime * spawnTimeMultiplier;
+
+    private Coroutine slowEffectRoutine;
+
+    public UnityAction<float> OnSlowTimeChanged;
+    public UnityAction OnSlowEffectEnded;
+
+    private void Awake()
+    {
+        currentSpawnTimeTarget = CalculateNextSpawnTime();
+    }
     private void Update()
     {
+        elapsedTime += Time.deltaTime;
         SpawnLoop();
     }
     private void SpawnLoop()
     {
         timeUntilObstacleSpawn += Time.deltaTime;
-        if (timeUntilObstacleSpawn >= obstacleSpawnTime)
+        if (timeUntilObstacleSpawn >= CurrentSpawnTime)
         {
             Spawn();
             timeUntilObstacleSpawn = 0f;
+            currentSpawnTimeTarget = CalculateNextSpawnTime();
         }
     }
     private void Spawn()
@@ -28,6 +59,38 @@ public class ObstacleSpawner: MonoBehaviour
         GameObject spawnedObstacle = Instantiate(obstacleToSpawn, transform.position, Quaternion.identity); //aqui este opstacleToSpawn se creara en nuestra escena en su posicion transform.position y con rotacion dada por el quaternion.identity 
 
         Rigidbody2D obstacleRB = spawnedObstacle.GetComponent<Rigidbody2D>(); //hacemos llamar a su collider (el del prefab)
-        obstacleRB.linearVelocity = Vector2.left * obstacleSpeed; //le agregamos velocidad
+        obstacleRB.linearVelocity = Vector2.left * CurrentObstacleSpeed; //le agregamos velocidad
+        Debug.Log($"Velocidad aplicada: {CurrentObstacleSpeed}");
+    }
+    private float CalculateNextSpawnTime()
+    {
+        float randomDistance = Random.Range(minDistanceBetweenObstacles, maxDistanceBetweenObstacles);
+        return Mathf.Max(minSpawnTime, randomDistance / CurrentBaseSpeed);
+    }
+    public void TriggerSlowEffect(float duration, float speedFactor = 0.5f, float spawnTimeFactor = 1.5f)
+    {
+        if (slowEffectRoutine != null)
+            StopCoroutine(slowEffectRoutine);
+
+        slowEffectRoutine = StartCoroutine(SlowEffectRoutine(duration, speedFactor, spawnTimeFactor));
+    }
+
+    private IEnumerator SlowEffectRoutine(float duration, float speedFactor, float spawnTimeFactor)
+    {
+        speedMultiplier = speedFactor;
+        spawnTimeMultiplier = spawnTimeFactor;
+
+        float remaining = duration;
+        while (remaining > 0f)
+        {
+            OnSlowTimeChanged?.Invoke(remaining);
+            remaining -= Time.deltaTime;
+            yield return null;
+        }
+
+        speedMultiplier = 1f;
+        spawnTimeMultiplier = 1f;
+        slowEffectRoutine = null;
+        OnSlowEffectEnded?.Invoke();
     }
 }
