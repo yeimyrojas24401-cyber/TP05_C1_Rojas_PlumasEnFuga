@@ -5329,6 +5329,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 324257950}
+  - component: {fileID: 324257954}
   - component: {fileID: 324257953}
   - component: {fileID: 324257952}
   - component: {fileID: 324257951}
@@ -5440,6 +5441,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 324257949}
   m_CullTransparentMesh: 1
+--- !u!114 &324257954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324257949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc8314c9943a7c4fb54599b60435e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonClickSound
+  audioSource: {fileID: 326548326}
+  clickClip: {fileID: 8300000, guid: ee50ccad4cb30d748addd9a7275fce93, type: 3}
 --- !u!1001 &326548325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8199,6 +8214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1578183680}
+  - component: {fileID: 1578183684}
   - component: {fileID: 1578183683}
   - component: {fileID: 1578183682}
   - component: {fileID: 1578183681}
@@ -8310,6 +8326,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1578183679}
   m_CullTransparentMesh: 1
+--- !u!114 &1578183684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578183679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc8314c9943a7c4fb54599b60435e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonClickSound
+  audioSource: {fileID: 326548326}
+  clickClip: {fileID: 8300000, guid: ee50ccad4cb30d748addd9a7275fce93, type: 3}
 --- !u!1 &1747597565 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3171509159615322298, guid: 7c19de3a5207d794c879b43125d3342e, type: 3}
@@ -8404,6 +8434,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2020025286}
+  - component: {fileID: 2020025290}
   - component: {fileID: 2020025289}
   - component: {fileID: 2020025288}
   - component: {fileID: 2020025287}
@@ -8515,6 +8546,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2020025285}
   m_CullTransparentMesh: 1
+--- !u!114 &2020025290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020025285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc8314c9943a7c4fb54599b60435e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonClickSound
+  audioSource: {fileID: 326548326}
+  clickClip: {fileID: 8300000, guid: ee50ccad4cb30d748addd9a7275fce93, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
