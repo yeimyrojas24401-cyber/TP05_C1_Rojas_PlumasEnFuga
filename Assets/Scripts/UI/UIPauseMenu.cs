@@ -53,7 +53,7 @@ public class UIPauseMenu : MonoBehaviour
 
     private void OnContinueClicked()
     {
-        Debug.Log($"[CONTINUE] Frame: {Time.frameCount} | isPause antes: {isPause}");
+
         isPause = !isPause; //!igual a lo opuesto
         pausePanel.SetActive(isPause);
         if (isPause)

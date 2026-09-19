@@ -2779,11 +2779,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1202533711}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f04ad5e2c7e2f3459be685855c654a7, type: 3}
+  m_Script: {fileID: 11500000, guid: dfc8314c9943a7c4fb54599b60435e22, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BackgroundMusicPlayer
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonClickSound
   audioSource: {fileID: 326548326}
-  musicClip: {fileID: 8300000, guid: ee50ccad4cb30d748addd9a7275fce93, type: 3}
+  clickClip: {fileID: 8300000, guid: ee50ccad4cb30d748addd9a7275fce93, type: 3}
 --- !u!1 &1246781761
 GameObject:
   m_ObjectHideFlags: 0
