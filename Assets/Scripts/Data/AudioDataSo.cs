@@ -60,7 +60,7 @@ public class AudioDataSo : ScriptableObject
     public void ResetVolumeSettings()
     {
         masterVolume = 1f;
-        backgroundVolume = 1f;
+        backgroundVolume = 0.2f;
         sfxVolume = 1f;
         uiVolume = 1f;
 
@@ -75,7 +75,7 @@ public class AudioDataSo : ScriptableObject
     public void LoadVolumeSettings()
     {
         masterVolume = PlayerPrefs.GetFloat(MasterKey, 1f);
-        backgroundVolume = PlayerPrefs.GetFloat(BackgroundKey, 1f);
+        backgroundVolume = PlayerPrefs.GetFloat(BackgroundKey, 0.2f);
         sfxVolume = PlayerPrefs.GetFloat(SfxKey, 1f);
         uiVolume = PlayerPrefs.GetFloat(UiKey, 1f);
     }

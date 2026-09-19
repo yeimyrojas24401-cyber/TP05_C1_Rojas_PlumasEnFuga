@@ -26,6 +26,8 @@ public class SliderVolumeChannel : MonoBehaviour
         sliderVolume.maxValue = 1f;
         sliderVolume.value = GetCurrentValue();
 
+        Debug.Log($"[{channel}] Valor leído del SO al iniciar: {GetCurrentValue()}");
+
         sliderVolume.onValueChanged.AddListener(OnValueChangedSliderVolume);
     }
 
