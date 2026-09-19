@@ -4,11 +4,16 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Data")]
     [SerializeField] private ScoreData scoreData;
     [SerializeField] private GameObject gameOverPanel;
+    [Header("Text")]
     [SerializeField] private GameObject scoreLabel;
     [SerializeField] private TMP_Text finalScoreText;
     [SerializeField] private TMP_Text finalHighScoreText;
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip gameOverClip;
     
     private void Start()
     {
@@ -24,9 +29,11 @@ public class GameManager : MonoBehaviour
         scoreLabel.SetActive(false);
         finalScoreText.text = "Score: " + scoreData.CurrentScore;
         finalHighScoreText.text = "Record: " + scoreData.HighScore;
+
+        audioSource.PlayOneShot(gameOverClip);
+
         Time.timeScale = 0f;
         gameOverPanel.SetActive(true);
-
     }
     public void Retry()
     {
