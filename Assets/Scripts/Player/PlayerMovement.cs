@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded = false;
     private bool isJumping = false;
 
+    [Header("Visuals")]
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
     [Header("Crouch Collider")]
     [SerializeField] private BoxCollider2D playerCollider;
 
@@ -27,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isCrouching = false;
     private void Awake()
     {
-        data.spriteRenderer.sprite = data.normalSprite;
+        spriteRenderer.sprite = data.normalSprite;
         normalColliderSize = playerCollider.size;
         normalColliderOffset = playerCollider.offset;
     }
@@ -65,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && Input.GetKeyDown(data.crouch))
         {
             isCrouching = true;
-            data.spriteRenderer.sprite = data.crouchSprite;
+            spriteRenderer.sprite = data.crouchSprite;
             playerCollider.size = data.crouchColliderSize;
             playerCollider.offset = data.crouchColliderOffset;
         }
@@ -73,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
         if (isCrouching && Input.GetKeyUp(data.crouch))
         {
             isCrouching = false;
-            data.spriteRenderer.sprite = data.normalSprite;
+            spriteRenderer.sprite = data.normalSprite;
             playerCollider.size = normalColliderSize;
             playerCollider.offset = normalColliderOffset;
         }

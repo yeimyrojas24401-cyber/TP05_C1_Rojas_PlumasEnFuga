@@ -19,7 +19,6 @@ public class PlayerDataSo : ScriptableObject
     public AudioClip jumpClip;
 
     [Header("Visuals")]
-    public SpriteRenderer spriteRenderer;
     public Sprite normalSprite;
     public Sprite crouchSprite;
 

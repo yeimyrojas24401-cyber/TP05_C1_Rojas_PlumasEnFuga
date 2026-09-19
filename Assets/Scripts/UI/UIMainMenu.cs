@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -88,6 +86,11 @@ public class UIMainMenu : MonoBehaviour
     }
 
     private void OnExitClicked()
+    {
+        Invoke(nameof(ExitAction), 0.5f);
+        Time.timeScale = 1f;
+    }
+        private void ExitAction()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;

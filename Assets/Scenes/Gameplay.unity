@@ -213,18 +213,9 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 467865f62c5694b4998a484d5150020e, type: 2}
   rb: {fileID: 80298982}
   feetPos: {fileID: 1061196071}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  groundDistance: 0.25
   audioSource: {fileID: 80298988}
-  jumpClip: {fileID: 8300000, guid: ee50ccad4cb30d748addd9a7275fce93, type: 3}
   spriteRenderer: {fileID: 1201674778}
-  normalSprite: {fileID: 9046215376232531194, guid: a32f67bbf11e77149849f8bf5fb060d6, type: 3}
-  crouchSprite: {fileID: 1634962700676060890, guid: 8621f9075ee173042bdcc85f66611347, type: 3}
   playerCollider: {fileID: 1201674779}
-  crouchColliderSize: {x: 1.435, y: 0.5}
-  crouchColliderOffset: {x: 0, y: 0}
   particleFeather: {fileID: 288957101}
 --- !u!114 &80298986
 MonoBehaviour:
