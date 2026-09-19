@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class UIPauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pausePanel;
-    [SerializeField] private GameObject settingsPanel;
+    //[SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject audioPanel;
     [SerializeField] private GameObject creditsPanel;
     [SerializeField] private Button btnContinue;
@@ -31,7 +31,7 @@ public class UIPauseMenu : MonoBehaviour
     private void Start()
     {
         pausePanel.SetActive(false);
-        settingsPanel.SetActive(false);
+        //settingsPanel.SetActive(false);
         audioPanel.SetActive(false);
         creditsPanel.SetActive(false);
     }
@@ -53,6 +53,7 @@ public class UIPauseMenu : MonoBehaviour
 
     private void OnContinueClicked()
     {
+        Debug.Log($"[CONTINUE] Frame: {Time.frameCount} | isPause antes: {isPause}");
         isPause = !isPause; //!igual a lo opuesto
         pausePanel.SetActive(isPause);
         if (isPause)
@@ -67,7 +68,7 @@ public class UIPauseMenu : MonoBehaviour
 
     private void OnSettingsClicked()
     {
-        settingsPanel.SetActive(true);
+        //settingsPanel.SetActive(true);
         pausePanel.SetActive(false);
         audioPanel.SetActive(false);
         creditsPanel.SetActive(false);
@@ -77,14 +78,14 @@ public class UIPauseMenu : MonoBehaviour
     {
         audioPanel.SetActive(true);
         pausePanel.SetActive(false);
-        settingsPanel.SetActive(false);
+        //settingsPanel.SetActive(false);
         creditsPanel.SetActive(false);
     }
     private void OnCreditsClicked()
     {
         creditsPanel.SetActive(true);
         pausePanel.SetActive(false);
-        settingsPanel.SetActive(false);
+        //settingsPanel.SetActive(false);
         audioPanel.SetActive(false);
     }
 

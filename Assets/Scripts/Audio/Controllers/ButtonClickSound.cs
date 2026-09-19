@@ -13,6 +13,7 @@ public class ButtonClickSound : MonoBehaviour
 
     private void PlayClickSound()
     {
+        Debug.Log($"[{gameObject.name}] PlayClickSound ejecutado en frame {Time.frameCount}");
         audioSource.PlayOneShot(clickClip);
     }
 }

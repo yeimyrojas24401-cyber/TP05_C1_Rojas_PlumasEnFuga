@@ -610,6 +610,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1540378492777722605, guid: 232e42c6a8a5cda42a83076395e91f88, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3440480070975103450, guid: 232e42c6a8a5cda42a83076395e91f88, type: 3}
       propertyPath: m_LocalPosition.x
       value: 462.64426
@@ -2500,7 +2504,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIPauseMenu
   pausePanel: {fileID: 1143766409}
-  settingsPanel: {fileID: 0}
   audioPanel: {fileID: 1089890558}
   creditsPanel: {fileID: 1747597565}
   btnContinue: {fileID: 1440679825}
