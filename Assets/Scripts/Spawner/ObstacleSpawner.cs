@@ -60,7 +60,7 @@ public class ObstacleSpawner: MonoBehaviour
 
         Rigidbody2D obstacleRB = spawnedObstacle.GetComponent<Rigidbody2D>(); //hacemos llamar a su collider (el del prefab)
         obstacleRB.linearVelocity = Vector2.left * CurrentObstacleSpeed; //le agregamos velocidad
-        Debug.Log($"Velocidad aplicada: {CurrentObstacleSpeed}");
+        //Debug.Log($"Velocidad aplicada: {CurrentObstacleSpeed}");
     }
     private float CalculateNextSpawnTime()
     {

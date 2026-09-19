@@ -8,26 +8,16 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform feetPos;
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private float groundDistance = 0.25f;
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip jumpClip;
 
     private float jumpTimer; //mide cuanto tiempo sostengo la tecla
     private bool isGrounded = false;
     private bool isJumping = false;
 
-    [Header("Visuals")]
-    [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private Sprite normalSprite;
-    [SerializeField] private Sprite crouchSprite;
-
     [Header("Crouch Collider")]
     [SerializeField] private BoxCollider2D playerCollider;
-    [SerializeField] private Vector2 crouchColliderSize;
-    [SerializeField] private Vector2 crouchColliderOffset;
 
     [Header("ParticleSystem")]
     [SerializeField] private ParticleSystem particleFeather;
@@ -37,13 +27,13 @@ public class PlayerMovement : MonoBehaviour
     private bool isCrouching = false;
     private void Awake()
     {
-        spriteRenderer.sprite = normalSprite;
+        data.spriteRenderer.sprite = data.normalSprite;
         normalColliderSize = playerCollider.size;
         normalColliderOffset = playerCollider.offset;
     }
     private void Update()
     {
-        isGrounded = Physics2D.OverlapCircle(feetPos.position, groundDistance, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(feetPos.position, data.groundDistance, data.groundLayer);
                                        //dibuja un circulo en feetPos.position con la distancia de ground Distance y checa si hay algo de 
 // Jumping
         if (isGrounded && Input.GetKeyDown(data.jump))
@@ -52,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
             jumpTimer = 0f;
             rb.linearVelocity = Vector2.up * data.jumpForce; //agrega una velocidad lineal que sera impulsada por mi fuerza de salto inicial
             particleFeather.Play();
-            audioSource.PlayOneShot(jumpClip);
+            audioSource.PlayOneShot(data.jumpClip);
         }
 
         if (isJumping && Input.GetKey(data.jump))
@@ -75,15 +65,15 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && Input.GetKeyDown(data.crouch))
         {
             isCrouching = true;
-            spriteRenderer.sprite = crouchSprite;
-            playerCollider.size = crouchColliderSize;
-            playerCollider.offset = crouchColliderOffset;
+            data.spriteRenderer.sprite = data.crouchSprite;
+            playerCollider.size = data.crouchColliderSize;
+            playerCollider.offset = data.crouchColliderOffset;
         }
 
         if (isCrouching && Input.GetKeyUp(data.crouch))
         {
             isCrouching = false;
-            spriteRenderer.sprite = normalSprite;
+            data.spriteRenderer.sprite = data.normalSprite;
             playerCollider.size = normalColliderSize;
             playerCollider.offset = normalColliderOffset;
         }

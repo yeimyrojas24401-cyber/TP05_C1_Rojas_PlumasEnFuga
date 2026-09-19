@@ -10,4 +10,20 @@ public class PlayerDataSo : ScriptableObject
     [Header("Jumping")]
     public float jumpForce = 10f; //fuerza de salto
     public float jumpTime = 0.3f; //tiempo maximo que dura en el aire
+
+    [Header("Ground")]
+    public LayerMask groundLayer;
+    public float groundDistance = 0.25f;
+
+    [Header("Audio")]
+    public AudioClip jumpClip;
+
+    [Header("Visuals")]
+    public SpriteRenderer spriteRenderer;
+    public Sprite normalSprite;
+    public Sprite crouchSprite;
+
+    [Header("Crouch Collider")]
+    public Vector2 crouchColliderSize;
+    public Vector2 crouchColliderOffset;
 }
