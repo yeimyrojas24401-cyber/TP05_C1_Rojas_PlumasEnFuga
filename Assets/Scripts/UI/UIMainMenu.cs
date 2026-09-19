@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -43,6 +44,7 @@ public class UIMainMenu : MonoBehaviour
         audioData.LoadVolumeSettings();
         audioData.ApplyAllToMixer();
     }
+
     private void OnDestroy()
     {
         btnPlay.onClick.RemoveAllListeners();
@@ -53,6 +55,11 @@ public class UIMainMenu : MonoBehaviour
     private void OnPlayClicked()
     {
         mainMenuPanel.SetActive(false);
+        Invoke(nameof(PlayAction), 0.5f);
+    }
+
+    private void PlayAction()
+    {
         SceneManager.LoadScene("Gameplay");
     }
 
@@ -71,6 +78,7 @@ public class UIMainMenu : MonoBehaviour
         settingsPanel.SetActive(false);
         creditsPanel.SetActive(false);
     }
+
     private void OnCreditsClicked()
     {
         creditsPanel.SetActive(true);
@@ -78,7 +86,6 @@ public class UIMainMenu : MonoBehaviour
         settingsPanel.SetActive(false);
         audioPanel.SetActive(false);
     }
-
 
     private void OnExitClicked()
     {

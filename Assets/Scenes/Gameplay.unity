@@ -238,6 +238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3b91f224e426aa4a9c3be03a8661969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCollisionHandle
+  audioSource: {fileID: 80298988}
+  powerUpClip: {fileID: 8300000, guid: dd166535e88e04146a56554ac03477c2, type: 3}
 --- !u!114 &80298987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,9 +263,9 @@ AudioSource:
   m_GameObject: {fileID: 80298981}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 6020212909888727361, guid: 70ccaf4562778504597410765699e369, type: 2}
+  OutputAudioMixerGroup: {fileID: -2937003498632592888, guid: 70ccaf4562778504597410765699e369, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: ee50ccad4cb30d748addd9a7275fce93, type: 3}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -5737,7 +5739,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -2937003498632592888, guid: 70ccaf4562778504597410765699e369, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 3fcfffb240c88054bb93e59d01417b04, type: 3}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

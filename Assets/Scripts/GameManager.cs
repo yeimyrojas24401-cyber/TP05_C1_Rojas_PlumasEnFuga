@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
         if (gameOverPanel != null )
             gameOverPanel.SetActive( false );
     }
+
     public void GameOver()
     {
         scoreData.SaveHighScore();
@@ -39,14 +41,26 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         gameOverPanel.SetActive(true);
     }
+
     public void Retry()
     {
         Time.timeScale = 1f;
+        Invoke(nameof(RetryAction), 0.5f);
+    }
+
+    private void RetryAction()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
     public void GoToMainMenu()
     {
         Time.timeScale = 1f;
+        Invoke(nameof(GoToMainMenuAction), 0.5f);
+    }
+
+    private void GoToMainMenuAction()
+    {
         SceneManager.LoadScene("MainMenu");
     }
 }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIPauseMenu : MonoBehaviour
@@ -80,6 +79,7 @@ public class UIPauseMenu : MonoBehaviour
         //settingsPanel.SetActive(false);
         creditsPanel.SetActive(false);
     }
+
     private void OnCreditsClicked()
     {
         creditsPanel.SetActive(true);
@@ -88,13 +88,19 @@ public class UIPauseMenu : MonoBehaviour
         audioPanel.SetActive(false);
     }
 
-
     private void OnExitClicked()
+    {
+        Invoke(nameof(ExitAction),0.5f);
+        Time.timeScale = 1f;
+    }
+
+    private void ExitAction()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
     Application.Quit();
 #endif
+
     }
 }

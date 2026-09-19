@@ -33,10 +33,17 @@ public class UIGameOverMenu : MonoBehaviour
 
     private void OnExitClicked()
     {
+        Invoke(nameof(ExitAction), 0.5f);
+        Time.timeScale = 1f;
+    }
+
+    private void ExitAction()
+    {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
     Application.Quit();
 #endif
+
     }
 }
