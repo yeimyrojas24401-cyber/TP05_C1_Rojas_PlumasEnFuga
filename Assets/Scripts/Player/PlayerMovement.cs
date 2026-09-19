@@ -29,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector2 crouchColliderSize;
     [SerializeField] private Vector2 crouchColliderOffset;
 
+    [Header("ParticleSystem")]
+    [SerializeField] private ParticleSystem particleFeather;
+
     private Vector2 normalColliderSize;
     private Vector2 normalColliderOffset;
     private bool isCrouching = false;
@@ -48,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
             isJumping = true;
             jumpTimer = 0f;
             rb.linearVelocity = Vector2.up * data.jumpForce; //agrega una velocidad lineal que sera impulsada por mi fuerza de salto inicial
+            particleFeather.Play();
             audioSource.PlayOneShot(jumpClip);
         }
 

@@ -13,7 +13,6 @@ public class UIPauseMenu : MonoBehaviour
     [SerializeField] private Button btnAudio;
     [SerializeField] private Button btnCredits;
     [SerializeField] private Button btnExit;
-
     private bool isPause = false;
     private void Awake()
     {
