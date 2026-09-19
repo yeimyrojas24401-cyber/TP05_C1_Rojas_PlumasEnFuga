@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("Data")]
     [SerializeField] private ScoreData scoreData;
+    [SerializeField] private AudioDataSo audioData;
     [SerializeField] private GameObject gameOverPanel;
     [Header("Text")]
     [SerializeField] private GameObject scoreLabel;
@@ -19,6 +20,9 @@ public class GameManager : MonoBehaviour
     {
         scoreData.ResetScore();
         scoreData.LoadHighScore();
+
+        audioData.LoadVolumeSettings();
+        audioData.ApplyAllToMixer();
 
         if (gameOverPanel != null )
             gameOverPanel.SetActive( false );

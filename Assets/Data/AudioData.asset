@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: AudioData
   m_EditorClassIdentifier: Assembly-CSharp::AudioDataSo
   masterVolume: 1
-  backgroundVolume: 0.267681
-  sfxVolume: 0.0001
+  backgroundVolume: 0.34017038
+  sfxVolume: 1
   uiVolume: 1
+  mixer: {fileID: 24100000, guid: 70ccaf4562778504597410765699e369, type: 2}

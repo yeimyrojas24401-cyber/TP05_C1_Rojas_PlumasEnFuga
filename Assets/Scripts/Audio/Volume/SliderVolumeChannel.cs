@@ -4,10 +4,11 @@ using UnityEngine.UI;
 
 public class SliderVolumeChannel : MonoBehaviour
 {
-    private enum Channel 
-    { Master, 
-      Background, 
-      SFX, UI 
+    private enum Channel
+    {
+        Master,
+        Background,
+        SFX, UI
     }
 
     [Header("Data")]
@@ -26,8 +27,6 @@ public class SliderVolumeChannel : MonoBehaviour
         sliderVolume.maxValue = 1f;
         sliderVolume.value = GetCurrentValue();
 
-        Debug.Log($"[{channel}] Valor leído del SO al iniciar: {GetCurrentValue()}");
-
         sliderVolume.onValueChanged.AddListener(OnValueChangedSliderVolume);
     }
 
@@ -42,21 +41,34 @@ public class SliderVolumeChannel : MonoBehaviour
         {
             case Channel.Master:
                 data.SetMasterVolume(value);
-                mixer.SetFloat("VolumeMaster", Mathf.Log10(value) * 20f);
                 break;
             case Channel.Background:
                 data.SetBackgroundVolume(value);
-                mixer.SetFloat("VolumeBackground", Mathf.Log10(value) * 20f);
                 break;
             case Channel.SFX:
                 data.SetSfxVolume(value);
-                mixer.SetFloat("VolumeSFX", Mathf.Log10(value) * 20f);
                 break;
             case Channel.UI:
                 data.SetUiVolume(value);
-                mixer.SetFloat("VolumeUI", Mathf.Log10(value) * 20f);
                 break;
         }
+
+        ApplyVolumeToMixer(value);
+    }
+
+    private void ApplyVolumeToMixer(float value)
+    {
+        string paramName = channel switch
+        {
+            Channel.Master => "VolumeMaster",
+            Channel.Background => "VolumeBackground",
+            Channel.SFX => "VolumeSFX",
+            Channel.UI => "VolumeUI",
+            _ => null
+        };
+
+        if (paramName != null)
+            mixer.SetFloat(paramName, Mathf.Log10(value) * 20f);
     }
 
     private float GetCurrentValue()

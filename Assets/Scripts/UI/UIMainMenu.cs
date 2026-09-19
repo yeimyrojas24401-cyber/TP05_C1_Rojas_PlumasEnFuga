@@ -18,6 +18,9 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] private Button btnCredits;
     [SerializeField] private Button btnExit;
 
+    [Header("Audio")]
+    [SerializeField] private AudioDataSo audioData;
+
     private void Awake()
     {
         btnPlay.onClick.AddListener(OnPlayClicked);
@@ -36,6 +39,9 @@ public class UIMainMenu : MonoBehaviour
         settingsPanel.SetActive(false);
         audioPanel.SetActive(false);
         creditsPanel.SetActive(false);
+
+        audioData.LoadVolumeSettings();
+        audioData.ApplyAllToMixer();
     }
     private void OnDestroy()
     {
