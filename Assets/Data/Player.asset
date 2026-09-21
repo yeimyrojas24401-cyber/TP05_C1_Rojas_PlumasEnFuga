@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 970db1aa042a80b4498f2ad8df50620c, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDataSo
-  jump: 119
-  crouch: 115
+  jump: 273
+  crouch: 274
   jumpForce: 10
   jumpTime: 0.5
   groundLayer:
