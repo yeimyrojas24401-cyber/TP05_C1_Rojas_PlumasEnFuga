@@ -375,7 +375,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIMainMenu
   mainMenuPanel: {fileID: 1523233248}
-  settingsPanel: {fileID: 1370373186}
   audioPanel: {fileID: 1601451393}
   creditsPanel: {fileID: 1996708173}
   btnPlay: {fileID: 1748567606}
@@ -403,7 +402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &477905619
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1215,7 +1214,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -709, y: 100}
+  m_AnchoredPosition: {x: -364, y: 100}
   m_SizeDelta: {x: 320, y: 76}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1748567606

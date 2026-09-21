@@ -6,7 +6,7 @@ public class UIMainMenu : MonoBehaviour
 {
     [Header("Panels")]
     [SerializeField] private GameObject mainMenuPanel;
-    [SerializeField] private GameObject settingsPanel;
+    //[SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject audioPanel;
     [SerializeField] private GameObject creditsPanel;
 
@@ -23,7 +23,7 @@ public class UIMainMenu : MonoBehaviour
     private void Awake()
     {
         btnPlay.onClick.AddListener(OnPlayClicked);
-        btnSettings.onClick.AddListener(OnSettingsClicked);
+        //btnSettings.onClick.AddListener(OnSettingsClicked);
         btnAudio.onClick.AddListener(OnAudioClicked);
         btnCredits.onClick.AddListener(OnCreditsClicked);
         btnExit.onClick.AddListener(OnExitClicked);
@@ -35,7 +35,7 @@ public class UIMainMenu : MonoBehaviour
 
     private void Start()
     {
-        settingsPanel.SetActive(false);
+        //settingsPanel.SetActive(false);
         audioPanel.SetActive(false);
         creditsPanel.SetActive(false);
 
@@ -46,7 +46,7 @@ public class UIMainMenu : MonoBehaviour
     private void OnDestroy()
     {
         btnPlay.onClick.RemoveAllListeners();
-        btnSettings.onClick.RemoveAllListeners();
+        //btnSettings.onClick.RemoveAllListeners();
         btnAudio.onClick.RemoveAllListeners();
         btnExit.onClick.RemoveAllListeners();
     }
@@ -63,7 +63,7 @@ public class UIMainMenu : MonoBehaviour
 
     private void OnSettingsClicked()
     {
-        settingsPanel.SetActive(true);
+        //settingsPanel.SetActive(true);
         mainMenuPanel.SetActive(false);
         audioPanel.SetActive(false);
         creditsPanel.SetActive(false);
@@ -73,7 +73,7 @@ public class UIMainMenu : MonoBehaviour
     {
         audioPanel.SetActive(true);
         mainMenuPanel.SetActive(false);
-        settingsPanel.SetActive(false);
+        //settingsPanel.SetActive(false);
         creditsPanel.SetActive(false);
     }
 
@@ -81,7 +81,7 @@ public class UIMainMenu : MonoBehaviour
     {
         creditsPanel.SetActive(true);
         mainMenuPanel.SetActive(false);
-        settingsPanel.SetActive(false);
+        //settingsPanel.SetActive(false);
         audioPanel.SetActive(false);
     }
 
