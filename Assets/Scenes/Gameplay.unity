@@ -214,6 +214,7 @@ MonoBehaviour:
   rb: {fileID: 80298982}
   feetPos: {fileID: 1061196071}
   audioSource: {fileID: 80298988}
+  animator: {fileID: 1201674780}
   spriteRenderer: {fileID: 1201674778}
   playerCollider: {fileID: 1201674779}
   particleFeather: {fileID: 288957101}

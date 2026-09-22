@@ -12,7 +12,11 @@ public class PlayerMovement : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
 
-    private float jumpTimer; //mide cuanto tiempo sostengo la tecla
+    [Header("Animation")]
+    [SerializeField] private Animator animator;
+    private string currentAnimState;
+
+    private float jumpTimer;
     private bool isGrounded = false;
     private bool isJumping = false;
 
@@ -28,32 +32,33 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 normalColliderSize;
     private Vector2 normalColliderOffset;
     private bool isCrouching = false;
+
     private void Awake()
     {
-        spriteRenderer.sprite = data.normalSprite;
         normalColliderSize = playerCollider.size;
         normalColliderOffset = playerCollider.offset;
     }
+
     private void Update()
     {
         isGrounded = Physics2D.OverlapCircle(feetPos.position, data.groundDistance, data.groundLayer);
-                                       //dibuja un circulo en feetPos.position con la distancia de ground Distance y checa si hay algo de 
-// Jumping
+
+        // Jumping
         if (isGrounded && Input.GetKeyDown(data.jump))
         {
             isJumping = true;
             jumpTimer = 0f;
-            rb.linearVelocity = Vector2.up * data.jumpForce; //agrega una velocidad lineal que sera impulsada por mi fuerza de salto inicial
+            rb.linearVelocity = Vector2.up * data.jumpForce;
             particleFeather.Play();
             audioSource.PlayOneShot(data.jumpClip);
         }
 
         if (isJumping && Input.GetKey(data.jump))
         {
-            if (jumpTimer < data.jumpTime) 
+            if (jumpTimer < data.jumpTime)
             {
-                rb.linearVelocity = Vector2.up * data.jumpForce; 
-                jumpTimer += Time.deltaTime; //al sumar el time.deltaTime asegura que jumpTimer en algun momento llegue a ser igual al jumpTimer y eso trae por consecuencia que isJumping = false
+                rb.linearVelocity = Vector2.up * data.jumpForce;
+                jumpTimer += Time.deltaTime;
             }
             else
             {
@@ -65,10 +70,10 @@ public class PlayerMovement : MonoBehaviour
         {
             isJumping = false;
         }
+
         if (isGrounded && Input.GetKeyDown(data.crouch))
         {
             isCrouching = true;
-            spriteRenderer.sprite = data.crouchSprite;
             playerCollider.size = data.crouchColliderSize;
             playerCollider.offset = data.crouchColliderOffset;
         }
@@ -76,9 +81,33 @@ public class PlayerMovement : MonoBehaviour
         if (isCrouching && Input.GetKeyUp(data.crouch))
         {
             isCrouching = false;
-            spriteRenderer.sprite = data.normalSprite;
             playerCollider.size = normalColliderSize;
             playerCollider.offset = normalColliderOffset;
         }
+
+        UpdateAnimation();
+    }
+
+    private void UpdateAnimation()
+    {
+        if (!isGrounded)
+        {
+            PlayAnimation("JumpCycle");
+        }
+        else if (isCrouching)
+        {
+            PlayAnimation("CrouchCycle");
+        }
+        else
+        {
+            PlayAnimation("WalkCycle");
+        }
+    }
+
+    private void PlayAnimation(string stateName)
+    {
+        if (currentAnimState == stateName) return; // evita reiniciar la animación cada frame
+        animator.Play(stateName);
+        currentAnimState = stateName;
     }
 }
