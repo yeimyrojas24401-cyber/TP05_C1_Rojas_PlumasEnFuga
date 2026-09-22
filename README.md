@@ -66,6 +66,8 @@ All volume is configurable from the Settings/Audio panel, routed through a singl
 
 During the development of this project, artificial intelligence tools were used as support for resolving questions, understanding concepts, and reviewing code. AI was primarily used as a reference and learning resource, providing explanations of programming structures, syntax, and possible solutions to problems encountered during development. No code was directly copied from AI-generated responses; the code implemented in the project was written and developed by the author based on their own understanding and adapted to the specific needs of the project.
 
+Link Itchio https://yeimy-rojas-midnightbaker.itch.io/plumas-en-fuga
+
 * Contact:
 * Yeimy Rojas The Midnight Baker.
 https://www.artstation.com/yeimy24401
