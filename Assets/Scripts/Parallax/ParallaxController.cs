@@ -8,7 +8,7 @@ public class Parallax : MonoBehaviour
     {
         public string name; // SOLO LA USO COMO IDENTIFICACION
         public float speed = 1f;
-        public List<Transform> tiles = new List<Transform>(); //esto nos permitira la posibilidad de agregar la tile por cada bg
+        public List<Transform> tiles = new List<Transform>(); //guarda la referencia del Transform de cada tile
 
         public float recycleThresholdX = -29f; //posicion X (local) en la que un tile de esta capa se considera fuera de pantalla y entonces debe reciclarse
 
@@ -19,7 +19,7 @@ public class Parallax : MonoBehaviour
 
     private void Start()
     {
-        foreach (var layer in parallaxLayer) 
+        foreach (var layer in parallaxLayer) //reordena
         {
             layer.tiles.Sort(CompararPorX);
         }
@@ -39,7 +39,7 @@ public class Parallax : MonoBehaviour
                 Transform current = layer.tiles[0];
                 Transform target = layer.tiles[^1];
 
-                layer.tiles.Remove(current);
+                layer.tiles.Remove(current); //se quita de la lista y los demas detras se recorren
                 layer.tiles.Add(current);
 
                 float posX = target.localPosition.x;
