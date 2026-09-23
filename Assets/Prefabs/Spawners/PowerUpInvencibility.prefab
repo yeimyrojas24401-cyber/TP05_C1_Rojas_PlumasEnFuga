@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2298872428127483972}
   - component: {fileID: 69407111964450157}
   - component: {fileID: 3109082376526907530}
+  - component: {fileID: 5736632248100798502}
   m_Layer: 10
   m_Name: PowerUpInvencibility
   m_TagString: Untagged
@@ -76,6 +77,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 6
+--- !u!95 &5736632248100798502
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986978887534945584}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5d7fb41bab93aef4fbe2b842d8fb109f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5924956465200590364
 GameObject:
   m_ObjectHideFlags: 0
