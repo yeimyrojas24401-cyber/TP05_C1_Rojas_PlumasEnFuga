@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6470217778079131691}
-  - component: {fileID: 1674261874205720248}
   - component: {fileID: 6836768580298357898}
   - component: {fileID: 7355544243443982784}
   m_Layer: 10
@@ -34,18 +33,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7293206784165191495}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1674261874205720248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 403467044487293098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f4117faba04dfd419ed0d7dfe259706, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PowerUpMarker
 --- !u!212 &6836768580298357898
 SpriteRenderer:
   serializedVersion: 2
@@ -160,7 +147,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7293206784165191495}
-  - component: {fileID: 4170478835670810413}
+  - component: {fileID: 2995061697138318535}
   - component: {fileID: 8606659169835491300}
   m_Layer: 10
   m_Name: PowerUpTime
@@ -185,7 +172,7 @@ Transform:
   - {fileID: 6470217778079131691}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4170478835670810413
+--- !u!114 &2995061697138318535
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,9 +181,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 9089249711366851349}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f4117faba04dfd419ed0d7dfe259706, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c54f5bce8514f6439fb918c89e1bc7a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PowerUpMarker
+  m_EditorClassIdentifier: Assembly-CSharp::PowerUp
+  powerUpType: 3
+  duration: 25
+  pickupClip: {fileID: 8300000, guid: 38661624b0d1f3b4ea7b0ba7ddfb1448, type: 3}
 --- !u!50 &8606659169835491300
 Rigidbody2D:
   serializedVersion: 5

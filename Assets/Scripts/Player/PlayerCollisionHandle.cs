@@ -17,13 +17,16 @@ public class PlayerCollisionHandle : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.GetComponent<PowerUpMarker>() != null)
-        {
-            Destroy(other.gameObject);
-            Object.FindFirstObjectByType<ObstacleSpawner>().TriggerSlowEffect(25f);
+        PowerUp powerUp = other.GetComponentInParent<PowerUp>();
 
-            audioSource.PlayOneShot(powerUpClip);
-            //Debug.Log("Trigger colisionado");
+        if (powerUp != null)
+        {
+            powerUp.DoAction(gameObject);
+
+            if (powerUp.PickupClip != null)
+                audioSource.PlayOneShot(powerUp.PickupClip);
+
+            Destroy(powerUp.gameObject);
         }
     }
 }
