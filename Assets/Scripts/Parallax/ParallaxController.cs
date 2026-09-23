@@ -33,7 +33,7 @@ public class Parallax : MonoBehaviour
             {
                 layer.tiles[i].position += Vector3.left * (layer.speed * Time.deltaTime);
             }
-
+            //sistema reciclado
             if (layer.tiles[0].localPosition.x < layer.recycleThresholdX)
             {
                 Transform current = layer.tiles[0];
@@ -42,7 +42,7 @@ public class Parallax : MonoBehaviour
                 layer.tiles.Remove(current); //se quita de la lista y los demas detras se recorren
                 layer.tiles.Add(current);
 
-                float posX = target.localPosition.x;
+                float posX = target.localPosition.x; //posicion a la que se transporta
                 current.localPosition = new Vector3(
                     posX + layer.tileSpacing,
                     current.localPosition.y,
