@@ -6159,7 +6159,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0323ab166d16b4296defac43b930b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Parallax
-  parallaxLayer: []
+  parallaxLayer:
+  - name: bg0
+    speed: 1
+    tiles:
+    - {fileID: 858129807}
+    - {fileID: 1946224581}
+    recycleThresholdX: -29
+    tileSpacing: 38.4
+  - name: bg1Mid
+    speed: 2
+    tiles:
+    - {fileID: 2119021018}
+    - {fileID: 1999889076}
+    recycleThresholdX: -29
+    tileSpacing: 38.4
+  - name: bg2Houses
+    speed: 3
+    tiles:
+    - {fileID: 1639157614}
+    - {fileID: 2044711482}
+    recycleThresholdX: -29
+    tileSpacing: 38.4
+  - name: bg3Sidewalk
+    speed: 3
+    tiles:
+    - {fileID: 674172905}
+    - {fileID: 574366906}
+    recycleThresholdX: -29
+    tileSpacing: 38.4
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
