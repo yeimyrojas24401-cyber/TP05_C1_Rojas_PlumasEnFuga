@@ -4,15 +4,17 @@ public class PlayerCollisionHandle : MonoBehaviour
 {
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip powerUpClip;
+    private PlayerHealth health;
+
+    private void Awake()
+    {
+        health = GetComponent<PlayerHealth>();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<ObstacleMarker>() != null)
-        {
-            Destroy(gameObject);
-            Object.FindFirstObjectByType<GameManager>().GameOver();
-        }
-
+            health.TakeHit(collision.gameObject);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

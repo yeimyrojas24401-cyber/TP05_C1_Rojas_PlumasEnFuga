@@ -8,26 +8,26 @@ public class Parallax : MonoBehaviour
     {
         public string name; // SOLO LA USO COMO IDENTIFICACION
         public float speed = 1f;
-        public List<Transform> tiles = new List<Transform>();
+        public List<Transform> tiles = new List<Transform>(); //esto nos permitira la posibilidad de agregar la tile por cada bg
 
         public float recycleThresholdX = -29f; //posicion X (local) en la que un tile de esta capa se considera fuera de pantalla y entonces debe reciclarse
 
         public float tileSpacing = 38.4f; //cuando se le debe sumar en X para reciclar el tile lo obtuve retando 48.4 (valor en x del tile fuera de camara) menos 10 valor de X en el tile de la camara
     }
 
-    [SerializeField] private List<ParallaxLayer> layers = new List<ParallaxLayer>();
+    [SerializeField] private List<ParallaxLayer> parallaxLayer = new List<ParallaxLayer>();
 
     private void Start()
     {
-        foreach (var layer in layers)
+        foreach (var layer in parallaxLayer) 
         {
-            layer.tiles.Sort((a, b) => a.localPosition.x.CompareTo(b.localPosition.x));
+            layer.tiles.Sort(CompararPorX);
         }
     }
 
     private void Update()
     {
-        foreach (var layer in layers)
+        foreach (var layer in parallaxLayer)
         {
             for (int i = 0; i < layer.tiles.Count; i++)
             {
@@ -49,6 +49,24 @@ public class Parallax : MonoBehaviour
                     current.localPosition.z
                 );
             }
+        }
+    }
+    private int CompararPorX(Transform a, Transform b)
+    {
+        float xA = a.localPosition.x;
+        float xB = b.localPosition.x;
+
+        if (xA < xB)
+        {
+            return -1; //esta x esta mas a la izquierda //signo negativo va primero
+        }
+        if (xA > xB)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
         }
     }
 }

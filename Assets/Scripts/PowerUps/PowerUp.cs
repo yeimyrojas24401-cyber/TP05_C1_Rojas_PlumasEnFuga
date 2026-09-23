@@ -24,10 +24,10 @@ public class PowerUp : MonoBehaviour
             case PowerUpType.None:
                 break;
             case PowerUpType.Life:
-                Debug.Log("PowerUp: Life Ejecutado");
+                player.GetComponent<PlayerHealth>().AddLife();
                 break;
             case PowerUpType.Invencibility:
-                Debug.Log("PowerUp: Invencibility Ejecutado");
+                player.GetComponent<PlayerHealth>().SetInvincible(duration);
                 break;
             case PowerUpType.Slow:
                 Object.FindFirstObjectByType<ObstacleSpawner>().TriggerSlowEffect(duration);
