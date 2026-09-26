@@ -24,7 +24,7 @@ public class ScoreData : ScriptableObject
         if (currentScore > highScore) //si superamos el record
         {
             highScore = currentScore; //actualizamos
-            OnNewHighScore?.Invoke(highScore); //avisamos que hay un nuevo record
+            OnNewHighScore?.Invoke(highScore); //avisamos que hay un nuevo record Por ahora NO LO TENGO HABILITADO
         }
     }
     public void ResetScore()
