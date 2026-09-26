@@ -43,10 +43,10 @@ public class ObstacleSpawner : MonoBehaviour
         UpdateSlowEffect();
         SpawnLoop();
     }
-    private void SpawnLoop()
+    private void SpawnLoop() //decide
     {
         timeUntilObstacleSpawn += Time.deltaTime;
-        if (timeUntilObstacleSpawn >= CurrentSpawnTime)
+        if (timeUntilObstacleSpawn >= currentSpawnTimeTarget * spawnTimeMultiplier)
         {
             Spawn();
             timeUntilObstacleSpawn = 0f;
