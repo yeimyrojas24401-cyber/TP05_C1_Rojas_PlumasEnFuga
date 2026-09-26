@@ -3,7 +3,7 @@ using TMPro;
 
 public class UIScore : MonoBehaviour
 {
-    [SerializeField] private ScoreData scoreData;
+    [SerializeField] private ScoreDataSo scoreData;
     [SerializeField] private TMP_Text scoreText;
 
     private void OnEnable()

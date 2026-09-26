@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ScoreIncrementer : MonoBehaviour
 {
-    [SerializeField] private ScoreData scoreData;
+    [SerializeField] private ScoreDataSo scoreData;
     [SerializeField] private float scorePerSecond = 10f;
 
     private float accumulator;

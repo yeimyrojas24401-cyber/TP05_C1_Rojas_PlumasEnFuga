@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [Header("Data")]
-    [SerializeField] private ScoreData scoreData;
+    [SerializeField] private ScoreDataSo scoreData;
     [SerializeField] private AudioDataSo audioData;
     [SerializeField] private GameObject gameOverPanel;
     [Header("Text")]

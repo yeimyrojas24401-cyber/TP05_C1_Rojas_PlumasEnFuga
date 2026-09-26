@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "ScoreDataSo", menuName = "Data/Game/Score Data")]
-public class ScoreData : ScriptableObject
+public class ScoreDataSo : ScriptableObject
 {
     [SerializeField] private int currentScore;
     [SerializeField] private int highScore;
@@ -11,8 +11,8 @@ public class ScoreData : ScriptableObject
                                              // de afuera puede leerlo pero no cambiarlo
     public int HighScore => highScore;
 
-    public UnityAction<int> OnScoreChanged; //cuando reciba el int podra ejecutar el evento
-    public UnityAction<int> OnNewHighScore;
+    public event UnityAction<int> OnScoreChanged;
+    public event UnityAction<int> OnNewHighScore;
 
     public void AddScore(int amount)
     {
