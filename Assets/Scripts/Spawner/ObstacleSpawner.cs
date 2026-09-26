@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -30,10 +29,9 @@ public class ObstacleSpawner : MonoBehaviour
     private float CurrentObstacleSpeed => CurrentBaseSpeed * speedMultiplier;
     private float CurrentSpawnTime => CurrentBaseSpawnTime * spawnTimeMultiplier;
 
-   // private Coroutine slowEffectRoutine;
 
-    public UnityAction<float> OnSlowTimeChanged;
-    public UnityAction OnSlowEffectEnded;
+    public event UnityAction<float> OnSlowTimeChanged;
+    public event UnityAction OnSlowEffectEnded;
 
     private void Awake()
     {
@@ -82,5 +80,12 @@ public class ObstacleSpawner : MonoBehaviour
 
         slowTimer -= Time.deltaTime;
         OnSlowTimeChanged?.Invoke(Mathf.Max(slowTimer, 0f));
+
+        if (slowTimer <= 0f)           // se acabó
+        {
+            speedMultiplier = 1f;
+            spawnTimeMultiplier = 1f;
+            OnSlowEffectEnded?.Invoke();
+        }
     }
 }
