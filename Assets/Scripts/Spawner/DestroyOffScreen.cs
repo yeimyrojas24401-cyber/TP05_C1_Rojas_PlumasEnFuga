@@ -2,15 +2,12 @@ using UnityEngine;
 
 public class DestroyOffScreen : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private float destroyX = -15f;
+    private void Update()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+       if (transform.position.x < destroyX)
+        {
+            Destroy(gameObject);
+        }
     }
 }
