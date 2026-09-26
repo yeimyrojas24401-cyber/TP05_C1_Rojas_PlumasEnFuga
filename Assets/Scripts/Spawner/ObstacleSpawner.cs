@@ -23,12 +23,14 @@ public class ObstacleSpawner : MonoBehaviour
     private float speedMultiplier = 1f;
     private float spawnTimeMultiplier = 1f;
 
+    private float slowTimer;
+
     private float CurrentBaseSpeed => baseObstacleSpeed + (elapsedTime * speedIncreasePerSecond);
     private float CurrentBaseSpawnTime => Mathf.Max(minSpawnTime, Random.Range(minDistanceBetweenObstacles, maxDistanceBetweenObstacles) / CurrentBaseSpeed);
     private float CurrentObstacleSpeed => CurrentBaseSpeed * speedMultiplier;
     private float CurrentSpawnTime => CurrentBaseSpawnTime * spawnTimeMultiplier;
 
-    private Coroutine slowEffectRoutine;
+   // private Coroutine slowEffectRoutine;
 
     public UnityAction<float> OnSlowTimeChanged;
     public UnityAction OnSlowEffectEnded;
@@ -40,6 +42,7 @@ public class ObstacleSpawner : MonoBehaviour
     private void Update()
     {
         elapsedTime += Time.deltaTime;
+        UpdateSlowEffect();
         SpawnLoop();
     }
     private void SpawnLoop()
@@ -69,28 +72,9 @@ public class ObstacleSpawner : MonoBehaviour
     }
     public void TriggerSlowEffect(float duration, float speedFactor = 0.5f, float spawnTimeFactor = 1.5f)
     {
-        if (slowEffectRoutine != null)
-            StopCoroutine(slowEffectRoutine);
-
-        slowEffectRoutine = StartCoroutine(SlowEffectRoutine(duration, speedFactor, spawnTimeFactor));
-    }
-
-    private IEnumerator SlowEffectRoutine(float duration, float speedFactor, float spawnTimeFactor)
-    {
         speedMultiplier = speedFactor;
         spawnTimeMultiplier = spawnTimeFactor;
-
-        float remaining = duration;
-        while (remaining > 0f)
-        {
-            OnSlowTimeChanged?.Invoke(remaining);
-            remaining -= Time.deltaTime;
-            yield return null;
-        }
-
-        speedMultiplier = 1f;
-        spawnTimeMultiplier = 1f;
-        slowEffectRoutine = null;
-        OnSlowEffectEnded?.Invoke();
+        slowTimer = duration;
     }
+
 }
