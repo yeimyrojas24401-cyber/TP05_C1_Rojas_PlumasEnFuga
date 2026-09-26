@@ -1,8 +1,8 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 using UnityEngine.Events;
 
-public class ObstacleSpawner: MonoBehaviour
+public class ObstacleSpawner : MonoBehaviour
 {
     [Header("Prefabs")]
     [SerializeField] private GameObject[] obstaclePrefabs;
@@ -15,7 +15,7 @@ public class ObstacleSpawner: MonoBehaviour
     [SerializeField] private float minSpawnTime = 0.6f; //tiempo limite de spawneo con power
     [SerializeField] private float minDistanceBetweenObstacles = 20f;
     [SerializeField] private float maxDistanceBetweenObstacles = 50f;
- 
+
     private float timeUntilObstacleSpawn;
     private float elapsedTime;
     private float currentSpawnTimeTarget;
@@ -24,7 +24,7 @@ public class ObstacleSpawner: MonoBehaviour
     private float spawnTimeMultiplier = 1f;
 
     private float CurrentBaseSpeed => baseObstacleSpeed + (elapsedTime * speedIncreasePerSecond);
-    private float CurrentBaseSpawnTime => Mathf.Max(minSpawnTime,Random.Range(minDistanceBetweenObstacles, maxDistanceBetweenObstacles) / CurrentBaseSpeed);
+    private float CurrentBaseSpawnTime => Mathf.Max(minSpawnTime, Random.Range(minDistanceBetweenObstacles, maxDistanceBetweenObstacles) / CurrentBaseSpeed);
     private float CurrentObstacleSpeed => CurrentBaseSpeed * speedMultiplier;
     private float CurrentSpawnTime => CurrentBaseSpawnTime * spawnTimeMultiplier;
 
