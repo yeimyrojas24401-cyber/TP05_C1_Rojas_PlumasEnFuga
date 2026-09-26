@@ -59,11 +59,11 @@ public class ObstacleSpawner : MonoBehaviour
                                                                                                // como obstacleToSpawn
         GameObject spawnedObstacle = Instantiate(obstacleToSpawn, transform.position, Quaternion.identity); //aqui este opstacleToSpawn se creara en nuestra escena en su posicion transform.position y con rotacion dada por el quaternion.identity 
 
-        Rigidbody2D obstacleRB = spawnedObstacle.GetComponent<Rigidbody2D>(); //hacemos llamar a su collider (el del prefab)
+        Rigidbody2D obstacleRB = spawnedObstacle.GetComponent<Rigidbody2D>(); 
         obstacleRB.linearVelocity = Vector2.left * CurrentObstacleSpeed; //le agregamos velocidad
         //Debug.Log($"Velocidad aplicada: {CurrentObstacleSpeed}");
     }
-    private float CalculateNextSpawnTime()
+    private float CalculateNextSpawnTime() //toma en cuenta mi velocidad actual para spawnear
     {
         float randomDistance = Random.Range(minDistanceBetweenObstacles, maxDistanceBetweenObstacles);
         return Mathf.Max(minSpawnTime, randomDistance / CurrentBaseSpeed);
