@@ -76,5 +76,11 @@ public class ObstacleSpawner : MonoBehaviour
         spawnTimeMultiplier = spawnTimeFactor;
         slowTimer = duration;
     }
+    private void UpdateSlowEffect()
+    {
+        if (slowTimer <= 0f) return;
 
+        slowTimer -= Time.deltaTime;
+        OnSlowTimeChanged?.Invoke(Mathf.Max(slowTimer, 0f));
+    }
 }
