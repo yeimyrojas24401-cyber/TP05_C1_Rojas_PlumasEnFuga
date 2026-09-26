@@ -35,8 +35,7 @@ public class ScoreDataSo : ScriptableObject
     }
     public void LoadHighScore() //traer el record guardado en el disco y lo carga en memoria 
     {
-        highScore = PlayerPrefs.GetInt("HighScore", 0); //use get int para guardar el int que encuentre bajo
-                                                        //el nombre de HighScore, el 0 es mi valor por defecto
+        highScore = PlayerPrefs.GetInt("HighScore", 0); //GetInt para leer el disco
     }
     public void SaveHighScore()
     {
