@@ -3,20 +3,15 @@ using UnityEngine.Events;
 
 public class ObstacleSpawner : MonoBehaviour
 {
+    [Header("Difficulty")]
+    [SerializeField] private DifficultySelectorSo difficultySelectorData;
+    private DifficultySettingsSo difficultyData; // se llena en Awake con la dificultad elegida
+
     [Header("WorldSpeedData")]
     [SerializeField] private WorldSpeedSo worldSpeedData;
-    
+
     [Header("Prefabs")]
     [SerializeField] private GameObject[] obstaclePrefabs;
-
-    [Header("Base Difficulty")]
-    [SerializeField] private float baseObstacleSpeed = 5f;
-
-    [Header("Difficulty Ramp")]
-    [SerializeField] private float speedIncreasePerSecond = 0.02f;
-    [SerializeField] private float minSpawnTime = 0.6f; //tiempo limite de spawneo entre obstaculos
-    [SerializeField] private float minDistanceBetweenObstacles = 20f;
-    [SerializeField] private float maxDistanceBetweenObstacles = 50f;
 
     [Header("Slow Effect")]
     [SerializeField] private float slowSpeedFactor = 0.5f;
@@ -31,16 +26,16 @@ public class ObstacleSpawner : MonoBehaviour
 
     private float slowTimer;
 
-    private float CurrentBaseSpeed => baseObstacleSpeed + (elapsedTime * speedIncreasePerSecond);
+    private float CurrentBaseSpeed => difficultyData.BaseWorldSpeed + (elapsedTime * difficultyData.SpeedIncreasePerSecond);
     private float CurrentObstacleSpeed => CurrentBaseSpeed * speedMultiplier;
-
 
     public event UnityAction<float> OnSlowTimeChanged;
     public event UnityAction OnSlowEffectEnded;
 
     private void Awake() //1
     {
-        worldSpeedData.ResetSpeed(baseObstacleSpeed);
+        difficultyData = difficultySelectorData.CurrentDifficulty; // primero: los demás la usan
+        worldSpeedData.ResetSpeed(difficultyData.BaseWorldSpeed);
         currentSpawnTimeTarget = CalculateNextSpawnTime();
     }
 
@@ -76,15 +71,14 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void Spawn()
     {
-        GameObject obstacleToSpawn = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)]; // da un numero indice ramdom en funcion del que se seleccionara el prefab y este prefab se quedara
-                                                                                               // como obstacleToSpawn
-        Instantiate(obstacleToSpawn, transform.position, Quaternion.identity); //aqui este opstacleToSpawn se creara en nuestra escena en su posicion transform.position y con rotacion dada por el quaternion.identity 
+        GameObject obstacleToSpawn = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)];
+        Instantiate(obstacleToSpawn, transform.position, Quaternion.identity);
     }
 
     private float CalculateNextSpawnTime() // 2 toma en cuenta mi velocidad actual para spawnear
     {
-        float randomDistance = Random.Range(minDistanceBetweenObstacles, maxDistanceBetweenObstacles);
-        return Mathf.Max(minSpawnTime, randomDistance / CurrentBaseSpeed);
+        float randomDistance = Random.Range(difficultyData.MinDistanceBetweenObstacles, difficultyData.MaxDistanceBetweenObstacles);
+        return Mathf.Max(difficultyData.MinSpawnTimeLimit, randomDistance / CurrentBaseSpeed);
     }
 
     private void TriggerSlowEffect(float duration)

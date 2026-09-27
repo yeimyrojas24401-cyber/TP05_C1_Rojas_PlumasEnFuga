@@ -2,10 +2,18 @@ using UnityEngine;
 
 public class PowerUpSpawner : MonoBehaviour
 {
+    [SerializeField] private DifficultySelectorSo difficultySelectorData;
     [SerializeField] private GameObject[] powerUpPrefabs;
-    [SerializeField] private float spawnTime = 30f;
+
+    private float spawnTime;
 
     private float timer;
+
+    private void Awake()
+    {
+        spawnTime = difficultySelectorData.CurrentDifficulty.PowerUpSpawnTime;
+    }
+
     private void Update()
     {
         timer += Time.deltaTime;
