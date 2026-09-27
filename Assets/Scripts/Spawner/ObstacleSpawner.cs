@@ -65,6 +65,7 @@ public class ObstacleSpawner : MonoBehaviour
         GameObject spawnedObstacle = Instantiate(obstacleToSpawn, transform.position, Quaternion.identity); //aqui este opstacleToSpawn se creara en nuestra escena en su posicion transform.position y con rotacion dada por el quaternion.identity 
 
         spawnedObstacle.GetComponent<MoveWithWorld>().Init(this);
+
         //Debug.Log($"Velocidad aplicada: {CurrentObstacleSpeed}");
     }
     private float CalculateNextSpawnTime() //toma en cuenta mi velocidad actual para spawnear

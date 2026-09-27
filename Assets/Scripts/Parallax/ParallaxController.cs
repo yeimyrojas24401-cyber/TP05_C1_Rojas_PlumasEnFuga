@@ -61,7 +61,7 @@ public class ParallaxController : MonoBehaviour
         {
             return -1;
         }
-        if (xA > xB)
+        else if (xA > xB)
         {
             return 1;
         }

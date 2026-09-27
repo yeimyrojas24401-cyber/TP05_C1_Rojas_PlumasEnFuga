@@ -160,6 +160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1823038334694086871}
+  - component: {fileID: 8295211478694015595}
   - component: {fileID: 8661073902899275117}
   - component: {fileID: 6812968958567167634}
   - component: {fileID: 8600255384638020200}
@@ -186,6 +187,18 @@ Transform:
   - {fileID: 3494891661573384977}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8295211478694015595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7230654774945197108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbb23ea39c59fd44e959d60145e73994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoveWithWorld
 --- !u!114 &8661073902899275117
 MonoBehaviour:
   m_ObjectHideFlags: 0
