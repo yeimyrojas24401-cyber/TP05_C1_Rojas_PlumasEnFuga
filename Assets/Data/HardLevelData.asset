@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d36c86f6ab7a83c49830e79a77a9ccb8, type: 3}
+  m_Name: HardLevelData
+  m_EditorClassIdentifier: Assembly-CSharp::DifficultySettingsSo
+  baseWorldSpeed: 5
+  speedIncreasePerSecond: 0.02
+  minSpawnTimeLimit: 0.6
+  minDistanceBetweenObstacles: 17
+  maxDistanceBetweenObstacles: 50
+  powerUpSpawnTime: 5
+  biomeIndex: 0
