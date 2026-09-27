@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 970db1aa042a80b4498f2ad8df50620c, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDataSo
-  jump: 273
-  crouch: 274
+  jumpKeys: 770000002000000011010000
+  crouchKeys: 7300000012010000
   jumpForce: 10
   jumpTime: 0.5
   groundLayer:
@@ -25,3 +25,6 @@ MonoBehaviour:
   crouchSprite: {fileID: 1634962700676060890, guid: 8621f9075ee173042bdcc85f66611347, type: 3}
   crouchColliderSize: {x: 1.435, y: 0.3}
   crouchColliderOffset: {x: 0, y: 0}
+  startingLives: 1
+  maxLives: 3
+  invulnerabilityAfterHit: 1.5

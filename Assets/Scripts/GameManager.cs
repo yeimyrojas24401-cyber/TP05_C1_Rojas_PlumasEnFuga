@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     {
         scoreData.SaveHighScore();
         scoreLabel.SetActive(false);
+
         finalScoreText.text = "Score: " + scoreData.CurrentScore;
         finalHighScoreText.text = "Record: " + scoreData.HighScore;
 
