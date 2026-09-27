@@ -15,7 +15,7 @@ public class ParallaxController : MonoBehaviour
 
     private void Update()
     {
-        float factor = obstacleSpawner.SpeedFactor;
+        float factor = obstacleSpawner.SpeedFactor; //obstacle velocity
         foreach (var layer in parallaxLayer)
         {
             for (int i = 0; i < layer.tiles.Count; i++)

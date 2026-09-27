@@ -19,7 +19,7 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private float slowSpeedFactor = 0.5f;
     [SerializeField] private float slowSpawnTimeFactor = 1.5f;
 
-    private float timeUntilObstacleSpawn;
+    private float timeUntilObstacleSpawn; //cronometro para decidir Spawn
     private float elapsedTime;
     private float currentSpawnTimeTarget;
 
@@ -39,7 +39,7 @@ public class ObstacleSpawner : MonoBehaviour
     public event UnityAction<float> OnSlowTimeChanged;
     public event UnityAction OnSlowEffectEnded;
 
-    private void Awake()
+    private void Awake() //1
     {
         currentSpawnTimeTarget = CalculateNextSpawnTime();
     }
@@ -54,14 +54,14 @@ public class ObstacleSpawner : MonoBehaviour
         PowerUp.OnSlowPowerUpTaken -= TriggerSlowEffect;
     }
 
-    private void Update()
+    private void Update() //3
     {
         elapsedTime += Time.deltaTime;
         UpdateSlowEffect();
         SpawnLoop();
     }
 
-    private void SpawnLoop() //decide
+    private void SpawnLoop() //4 decide
     {
         timeUntilObstacleSpawn += Time.deltaTime;
         if (timeUntilObstacleSpawn >= currentSpawnTimeTarget * spawnTimeMultiplier)
@@ -83,7 +83,7 @@ public class ObstacleSpawner : MonoBehaviour
         //Debug.Log($"Velocidad aplicada: {CurrentObstacleSpeed}");
     }
 
-    private float CalculateNextSpawnTime() //toma en cuenta mi velocidad actual para spawnear
+    private float CalculateNextSpawnTime() // 2 toma en cuenta mi velocidad actual para spawnear
     {
         float randomDistance = Random.Range(minDistanceBetweenObstacles, maxDistanceBetweenObstacles);
         return Mathf.Max(minSpawnTime, randomDistance / CurrentBaseSpeed);
