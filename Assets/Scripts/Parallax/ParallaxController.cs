@@ -21,7 +21,7 @@ public class ParallaxController : MonoBehaviour
     {
         foreach (var layer in parallaxLayer) //reordena
         {
-            layer.tiles.Sort(CompararPorX);
+            layer.tiles.Sort(ComparingX);
         }
     }
 
@@ -52,7 +52,7 @@ public class ParallaxController : MonoBehaviour
             }
         }
     }
-    private int CompararPorX(Transform a, Transform b)
+    private int ComparingX(Transform a, Transform b)
     {
         float xA = a.localPosition.x;
         float xB = b.localPosition.x;

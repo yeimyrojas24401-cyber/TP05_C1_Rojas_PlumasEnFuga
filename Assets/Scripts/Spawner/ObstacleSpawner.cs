@@ -15,6 +15,9 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private float minDistanceBetweenObstacles = 20f;
     [SerializeField] private float maxDistanceBetweenObstacles = 50f;
 
+    [Header("Slow Effect")]
+    [SerializeField] private float slowSpeedFactor = 0.5f;
+    [SerializeField] private float slowSpawnTimeFactor = 1.5f;
 
     private float timeUntilObstacleSpawn;
     private float elapsedTime;

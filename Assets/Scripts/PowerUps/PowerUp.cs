@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 enum PowerUpType
 {
@@ -10,8 +11,9 @@ enum PowerUpType
 }
 public class PowerUp : MonoBehaviour
 {
+    public static event UnityAction<float> OnSlowPowerUpTaken;
     [SerializeField] private PowerUpType powerUpType = PowerUpType.None;
-    [SerializeField] private float duration = 25f;
+    [SerializeField] private float duration = 10f;
     [SerializeField] private AudioClip pickupClip;
 
     public AudioClip PickupClip => pickupClip;
@@ -23,19 +25,25 @@ public class PowerUp : MonoBehaviour
         {
             case PowerUpType.None:
                 break;
+
             case PowerUpType.Life:
                 player.GetComponent<PlayerHealth>().AddLife();
                 break;
+
             case PowerUpType.Invencibility:
                 player.GetComponent<PlayerHealth>().SetInvincible(duration);
                 break;
+
             case PowerUpType.Slow:
-                Object.FindFirstObjectByType<ObstacleSpawner>().TriggerSlowEffect(duration);
+                OnSlowPowerUpTaken?.Invoke(duration);
                 break;
+
             case PowerUpType.Last:
                 break;
+
             default:
                 break;
+
         }
 
     }
