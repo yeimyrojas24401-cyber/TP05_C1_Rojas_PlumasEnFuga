@@ -51,6 +51,14 @@ public class ObstacleSpawner : MonoBehaviour
         UpdateSlowEffect();
         SpawnLoop();
     }
+    private void OnEnable()
+    {
+        PowerUp.OnSlowPowerUpTaken += TriggerSlowEffect;
+    }
+    private void OnDisable()
+    {
+        PowerUp.OnSlowPowerUpTaken -= TriggerSlowEffect;
+    }
     private void SpawnLoop() //decide
     {
         timeUntilObstacleSpawn += Time.deltaTime;
@@ -76,10 +84,10 @@ public class ObstacleSpawner : MonoBehaviour
         float randomDistance = Random.Range(minDistanceBetweenObstacles, maxDistanceBetweenObstacles);
         return Mathf.Max(minSpawnTime, randomDistance / CurrentBaseSpeed);
     }
-    public void TriggerSlowEffect(float duration, float speedFactor = 0.5f, float spawnTimeFactor = 1.5f)
+    private void TriggerSlowEffect(float duration)
     {
-        speedMultiplier = speedFactor;
-        spawnTimeMultiplier = spawnTimeFactor;
+        speedMultiplier = slowSpeedFactor;
+        spawnTimeMultiplier = slowSpawnTimeFactor;
         slowTimer = duration;
     }
     private void UpdateSlowEffect()
