@@ -17,6 +17,7 @@ public class PowerUpSpawner : MonoBehaviour
             timer = 0f;
         }
     }
+
     private void Spawn()
     {
         GameObject prefab = powerUpPrefabs[Random.Range(0, powerUpPrefabs.Length)];

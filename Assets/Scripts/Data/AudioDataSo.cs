@@ -22,19 +22,26 @@ public class AudioDataSo : ScriptableObject
     private const string SfxKey = "VolumeSFX";
     private const string UiKey = "VolumeUI";
 
-    public UnityAction<float> OnMasterVolumeChanged;
-    public UnityAction<float> OnBackgroundVolumeChanged;
-    public UnityAction<float> OnSfxVolumeChanged;
-    public UnityAction<float> OnUiVolumeChanged;
+    public event UnityAction<float> OnMasterVolumeChanged;
+    public event UnityAction<float> OnBackgroundVolumeChanged;
+    public event UnityAction<float> OnSfxVolumeChanged;
+    public event UnityAction<float> OnUiVolumeChanged;
 
     private void OnEnable()
     {
         LoadVolumeSettings();
         ApplyAllToMixer();
     }
+
+    private void ApplyToMixer(string key, float value)
+    {
+        mixer.SetFloat(key, Mathf.Log10(Mathf.Max(value, 0.0001f)) * 20f);
+    }
+
     public void SetMasterVolume(float value)
     {
         masterVolume = value;
+        ApplyToMixer(MasterKey, masterVolume);
         OnMasterVolumeChanged?.Invoke(masterVolume);
         SaveVolumeSettings(); 
     }
@@ -42,6 +49,7 @@ public class AudioDataSo : ScriptableObject
     public void SetBackgroundVolume(float value)
     {
         backgroundVolume = value;
+        ApplyToMixer(BackgroundKey, backgroundVolume);
         OnBackgroundVolumeChanged?.Invoke(backgroundVolume);
         SaveVolumeSettings(); 
     }
@@ -49,6 +57,7 @@ public class AudioDataSo : ScriptableObject
     public void SetSfxVolume(float value)
     {
         sfxVolume = value;
+        ApplyToMixer(SfxKey, sfxVolume);
         OnSfxVolumeChanged?.Invoke(sfxVolume);
         SaveVolumeSettings(); 
     }
@@ -56,6 +65,7 @@ public class AudioDataSo : ScriptableObject
     public void SetUiVolume(float value)
     {
         uiVolume = value;
+        ApplyToMixer(UiKey, uiVolume);
         OnUiVolumeChanged?.Invoke(uiVolume);
         SaveVolumeSettings(); 
     }
@@ -99,4 +109,5 @@ public class AudioDataSo : ScriptableObject
         mixer.SetFloat(SfxKey, Mathf.Log10(sfxVolume) * 20f);
         mixer.SetFloat(UiKey, Mathf.Log10(uiVolume) * 20f);
     }
+
 }

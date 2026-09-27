@@ -53,22 +53,6 @@ public class SliderVolumeChannel : MonoBehaviour
                 break;
         }
 
-        ApplyVolumeToMixer(value);
-    }
-
-    private void ApplyVolumeToMixer(float value)
-    {
-        string paramName = channel switch
-        {
-            Channel.Master => "VolumeMaster",
-            Channel.Background => "VolumeBackground",
-            Channel.SFX => "VolumeSFX",
-            Channel.UI => "VolumeUI",
-            _ => null
-        };
-
-        if (paramName != null)
-            mixer.SetFloat(paramName, Mathf.Log10(value) * 20f);
     }
 
     private float GetCurrentValue()
