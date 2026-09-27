@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d36c86f6ab7a83c49830e79a77a9ccb8, type: 3}
   m_Name: HardLevelData
   m_EditorClassIdentifier: Assembly-CSharp::DifficultySettingsSo
-  baseWorldSpeed: 7
-  speedIncreasePerSecond: 0.05
+  baseWorldSpeed: 10
+  speedIncreasePerSecond: 0.09
   minSpawnTimeLimit: 0.5
   minDistanceBetweenObstacles: 15
-  maxDistanceBetweenObstacles: 35
+  maxDistanceBetweenObstacles: 25
   powerUpSpawnTime: 15
   biomeIndex: 1
