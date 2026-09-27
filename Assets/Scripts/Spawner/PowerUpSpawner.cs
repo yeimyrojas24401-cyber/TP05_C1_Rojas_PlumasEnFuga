@@ -19,7 +19,7 @@ public class PowerUpSpawner : MonoBehaviour
     private void Spawn()
     {
         GameObject prefab = powerUpPrefabs[Random.Range(0, powerUpPrefabs.Length)];
-        GameObject spawned = Instantiate(prefab, transform.position, Quaternion.identity);
+        Instantiate(prefab, transform.position, Quaternion.identity);
 
     }
 }

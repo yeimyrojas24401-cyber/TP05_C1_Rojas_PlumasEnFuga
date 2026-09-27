@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb23ea39c59fd44e959d60145e73994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveWithWorld
+  worldSpeedData: {fileID: 11400000, guid: 787d65e218cfdeb4091637b6617fd4bc, type: 2}
 --- !u!50 &8606659169835491300
 Rigidbody2D:
   serializedVersion: 5

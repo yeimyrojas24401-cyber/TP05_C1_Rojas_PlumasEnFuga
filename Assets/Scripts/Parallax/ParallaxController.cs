@@ -15,12 +15,12 @@ public class ParallaxController : MonoBehaviour
 
     private void Update()
     {
-        float factor = worldSpeedData.SpeedFactor; //obstacle velocity
+        float worldSpeed = worldSpeedData.CurrentSpeed; // velocidad del mundo
         foreach (var layer in parallaxLayer)
         {
             for (int i = 0; i < layer.tiles.Count; i++)
             {
-                layer.tiles[i].position += Vector3.left * (layer.speed * factor * Time.deltaTime);
+                layer.tiles[i].position += Vector3.left * (layer.speed * worldSpeed * Time.deltaTime);
             }
             //sistema reciclado
             if (layer.tiles[0].localPosition.x < layer.recycleThresholdX)

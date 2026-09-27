@@ -78,7 +78,7 @@ public class ObstacleSpawner : MonoBehaviour
     {
         GameObject obstacleToSpawn = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)]; // da un numero indice ramdom en funcion del que se seleccionara el prefab y este prefab se quedara
                                                                                                // como obstacleToSpawn
-        GameObject spawnedObstacle = Instantiate(obstacleToSpawn, transform.position, Quaternion.identity); //aqui este opstacleToSpawn se creara en nuestra escena en su posicion transform.position y con rotacion dada por el quaternion.identity 
+        Instantiate(obstacleToSpawn, transform.position, Quaternion.identity); //aqui este opstacleToSpawn se creara en nuestra escena en su posicion transform.position y con rotacion dada por el quaternion.identity 
     }
 
     private float CalculateNextSpawnTime() // 2 toma en cuenta mi velocidad actual para spawnear
