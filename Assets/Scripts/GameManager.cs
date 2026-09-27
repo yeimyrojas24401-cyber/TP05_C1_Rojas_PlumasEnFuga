@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ScoreDataSo scoreData;
     [SerializeField] private AudioDataSo audioData;
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private PlayerHealth playerHealth;
     [Header("Text")]
     [SerializeField] private GameObject scoreLabel;
     [SerializeField] private TMP_Text finalScoreText;
@@ -25,11 +25,19 @@ public class GameManager : MonoBehaviour
         audioData.LoadVolumeSettings();
         audioData.ApplyAllToMixer();
 
-        if (gameOverPanel != null )
-            gameOverPanel.SetActive( false );
     }
 
-    public void GameOver()
+    private void OnEnable()
+    {
+        playerHealth.OnDied += GameOver;
+    }
+
+    private void OnDisable()
+    {
+        if (playerHealth != null)
+            playerHealth.OnDied -= GameOver;
+    }
+    private void GameOver()
     {
         scoreData.SaveHighScore();
         scoreLabel.SetActive(false);

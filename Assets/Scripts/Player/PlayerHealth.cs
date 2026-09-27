@@ -12,6 +12,7 @@ public class PlayerHealth : MonoBehaviour
     private float invincibleTimer;
 
     public event UnityAction<int> OnLivesChanged;
+    public event UnityAction OnDied;
 
     private void Awake()
     {
@@ -45,7 +46,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (CurrentLives <= 0)
         {
-            Object.FindFirstObjectByType<GameManager>().GameOver();
+            OnDied?.Invoke();
             Destroy(gameObject);
             return;
         }

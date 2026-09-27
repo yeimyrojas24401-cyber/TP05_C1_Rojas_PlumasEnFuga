@@ -5713,6 +5713,7 @@ MonoBehaviour:
   scoreData: {fileID: 11400000, guid: 6119b6db189e8644987f32cd59face3d, type: 2}
   audioData: {fileID: 11400000, guid: f078a52a6c54a254b840278b7ee7c448, type: 2}
   gameOverPanel: {fileID: 1464869123}
+  playerHealth: {fileID: 80298989}
   scoreLabel: {fileID: 344644693}
   finalScoreText: {fileID: 1246781763}
   finalHighScoreText: {fileID: 618930805}
@@ -7851,8 +7852,8 @@ MonoBehaviour:
   pausePanel: {fileID: 1143766409}
   audioPanel: {fileID: 1089890558}
   creditsPanel: {fileID: 1747597565}
+  gameOverPanel: {fileID: 1464869123}
   btnContinue: {fileID: 1440679825}
-  btnSettings: {fileID: 192094833}
   btnAudio: {fileID: 1439791507}
   btnCredits: {fileID: 1036264560}
   btnExit: {fileID: 1202533713}
