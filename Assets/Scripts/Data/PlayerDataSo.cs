@@ -4,8 +4,8 @@ using UnityEngine;
 public class PlayerDataSo : ScriptableObject
 {
     [Header("MoveSettings")]
-    public KeyCode jump = KeyCode.W;
-    public KeyCode crouch = KeyCode.S;
+    public KeyCode[] jumpKeys = { KeyCode.W, KeyCode.Space, KeyCode.UpArrow };
+    public KeyCode[] crouchKeys = { KeyCode.S, KeyCode.DownArrow };
 
     [Header("Jumping")]
     public float jumpForce = 10f; //fuerza de salto

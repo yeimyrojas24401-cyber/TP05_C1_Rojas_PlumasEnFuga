@@ -1690,6 +1690,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CreditsPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 3171509159615322298, guid: 7c19de3a5207d794c879b43125d3342e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5153820325450512273, guid: 7c19de3a5207d794c879b43125d3342e, type: 3}
       propertyPath: backPanel
       value: 

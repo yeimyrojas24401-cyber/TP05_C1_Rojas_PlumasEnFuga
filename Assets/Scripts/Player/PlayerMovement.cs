@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(feetPos.position, data.groundDistance, data.groundLayer);
 
         // Jumping
-        if (isGrounded && Input.GetKeyDown(data.jump))
+        if (isGrounded && AnyKeyDown(data.jumpKeys))
         {
             isJumping = true;
             jumpTimer = 0f;
@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
             audioSource.PlayOneShot(data.jumpClip);
         }
 
-        if (isJumping && Input.GetKey(data.jump))
+        if (isJumping && AnyKeyHeld(data.jumpKeys))
         {
             if (jumpTimer < data.jumpTime)
             {
@@ -66,19 +66,19 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyUp(data.jump))
+        if (!AnyKeyHeld(data.jumpKeys))
         {
             isJumping = false;
         }
 
-        if (isGrounded && Input.GetKeyDown(data.crouch))
+        if (isGrounded && AnyKeyDown(data.crouchKeys))
         {
             isCrouching = true;
             playerCollider.size = data.crouchColliderSize;
             playerCollider.offset = data.crouchColliderOffset;
         }
 
-        if (isCrouching && Input.GetKeyUp(data.crouch))
+        if (isCrouching && !AnyKeyHeld(data.crouchKeys))
         {
             isCrouching = false;
             playerCollider.size = normalColliderSize;
@@ -109,5 +109,19 @@ public class PlayerMovement : MonoBehaviour
         if (currentAnimState == stateName) return; // evita reiniciar la animación cada frame
         animator.Play(stateName);
         currentAnimState = stateName;
+    }
+
+    private bool AnyKeyDown(KeyCode[] keys)      
+    {
+        foreach (KeyCode key in keys)
+            if (Input.GetKeyDown(key)) return true;
+        return false;
+    }
+
+    private bool AnyKeyHeld(KeyCode[] keys) 
+    {
+        foreach (KeyCode key in keys)
+            if (Input.GetKey(key)) return true;
+        return false;
     }
 }
