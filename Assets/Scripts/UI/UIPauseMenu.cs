@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UIPauseMenu : MonoBehaviour
@@ -57,6 +58,7 @@ public class UIPauseMenu : MonoBehaviour
             creditsPanel.SetActive(false);
         }
         Time.timeScale = isPause ? 0f : 1f;
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
 
