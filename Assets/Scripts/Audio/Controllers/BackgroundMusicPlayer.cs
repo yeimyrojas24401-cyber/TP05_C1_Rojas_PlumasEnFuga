@@ -9,7 +9,6 @@ public class BackgroundMusicPlayer : MonoBehaviour
     {
         audioSource.clip = musicClip;
         audioSource.loop = true;
-        audioSource.playOnAwake = false;
     }
 
     private void Start()

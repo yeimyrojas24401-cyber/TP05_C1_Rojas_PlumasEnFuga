@@ -4,11 +4,10 @@ using UnityEngine.UI;
 public class UIPauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pausePanel;
-    //[SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject audioPanel;
     [SerializeField] private GameObject creditsPanel;
+    [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private Button btnContinue;
-    [SerializeField] private Button btnSettings;
     [SerializeField] private Button btnAudio;
     [SerializeField] private Button btnCredits;
     [SerializeField] private Button btnExit;
@@ -16,7 +15,6 @@ public class UIPauseMenu : MonoBehaviour
     private void Awake()
     {
         btnContinue.onClick.AddListener(OnContinueClicked);
-        btnSettings.onClick.AddListener(OnSettingsClicked);
         btnAudio.onClick.AddListener(OnAudioClicked);
         btnCredits.onClick.AddListener(OnCreditsClicked);
         btnExit.onClick.AddListener(OnExitClicked);
@@ -29,12 +27,12 @@ public class UIPauseMenu : MonoBehaviour
     private void Start()
     {
         pausePanel.SetActive(false);
-        //settingsPanel.SetActive(false);
         audioPanel.SetActive(false);
         creditsPanel.SetActive(false);
     }
     private void Update()
     {
+        if (gameOverPanel.activeSelf) return;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             OnContinueClicked();
@@ -43,7 +41,6 @@ public class UIPauseMenu : MonoBehaviour
     private void OnDestroy()
     {
         btnContinue.onClick.RemoveAllListeners();
-        btnSettings.onClick.RemoveAllListeners();
         btnCredits.onClick.RemoveAllListeners();
         btnAudio.onClick.RemoveAllListeners();
         btnExit.onClick.RemoveAllListeners();
@@ -54,29 +51,19 @@ public class UIPauseMenu : MonoBehaviour
 
         isPause = !isPause; //!igual a lo opuesto
         pausePanel.SetActive(isPause);
-        if (isPause)
+        if (!isPause)
         {
-            Time.timeScale = 0f;
+            audioPanel.SetActive(false);
+            creditsPanel.SetActive(false);
         }
-        else
-        {
-            Time.timeScale = 1f;
-        }
+        Time.timeScale = isPause ? 0f : 1f;
     }
 
-    private void OnSettingsClicked()
-    {
-        //settingsPanel.SetActive(true);
-        pausePanel.SetActive(false);
-        audioPanel.SetActive(false);
-        creditsPanel.SetActive(false);
-    }
 
     private void OnAudioClicked()
     {
         audioPanel.SetActive(true);
         pausePanel.SetActive(false);
-        //settingsPanel.SetActive(false);
         creditsPanel.SetActive(false);
     }
 
@@ -84,7 +71,6 @@ public class UIPauseMenu : MonoBehaviour
     {
         creditsPanel.SetActive(true);
         pausePanel.SetActive(false);
-        //settingsPanel.SetActive(false);
         audioPanel.SetActive(false);
     }
 

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 360132456447202619}
+  - component: {fileID: 2308802034418014884}
   - component: {fileID: 7031111873417465291}
   m_Layer: 0
   m_Name: BackgroundAudioSource
@@ -32,6 +33,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3440480070975103450}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2308802034418014884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075016622569203360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f04ad5e2c7e2f3459be685855c654a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BackgroundMusicPlayer
+  audioSource: {fileID: 7031111873417465291}
+  musicClip: {fileID: 8300000, guid: d81aa1c470d738c49b995bcfd3b43cf5, type: 3}
 --- !u!82 &7031111873417465291
 AudioSource:
   m_ObjectHideFlags: 0
@@ -44,7 +59,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -1288507507785705084, guid: 70ccaf4562778504597410765699e369, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: d81aa1c470d738c49b995bcfd3b43cf5, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
