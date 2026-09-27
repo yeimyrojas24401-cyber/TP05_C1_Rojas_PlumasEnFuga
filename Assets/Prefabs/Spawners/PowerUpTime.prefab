@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PowerUp
   powerUpType: 3
-  duration: 25
+  duration: 5
   pickupClip: {fileID: 8300000, guid: 38661624b0d1f3b4ea7b0ba7ddfb1448, type: 3}
 --- !u!114 &7916081582633417970
 MonoBehaviour:
