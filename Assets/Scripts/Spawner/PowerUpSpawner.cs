@@ -6,6 +6,7 @@ public class PowerUpSpawner : MonoBehaviour
     [SerializeField] private float spawnTime = 30f;
     [SerializeField] private float moveSpeed = 1f;
 
+    [SerializeField] private ObstacleSpawner obstacleSpawner;
     private float timer;
     private void Update()
     {
@@ -21,7 +22,6 @@ public class PowerUpSpawner : MonoBehaviour
         GameObject prefab = powerUpPrefabs[Random.Range(0, powerUpPrefabs.Length)];
         GameObject spawned = Instantiate(prefab, transform.position, Quaternion.identity);
 
-        Rigidbody2D rb = spawned.GetComponent<Rigidbody2D>();
-        rb.linearVelocity = Vector2.left * moveSpeed;
+        spawned.GetComponent<MoveWithWorld>().Init(obstacleSpawner);
     }
 }
