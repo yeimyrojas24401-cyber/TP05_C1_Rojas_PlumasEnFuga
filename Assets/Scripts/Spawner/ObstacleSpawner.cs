@@ -15,6 +15,7 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private float minDistanceBetweenObstacles = 20f;
     [SerializeField] private float maxDistanceBetweenObstacles = 50f;
 
+
     private float timeUntilObstacleSpawn;
     private float elapsedTime;
     private float currentSpawnTimeTarget;
@@ -28,6 +29,10 @@ public class ObstacleSpawner : MonoBehaviour
     private float CurrentBaseSpawnTime => Mathf.Max(minSpawnTime, Random.Range(minDistanceBetweenObstacles, maxDistanceBetweenObstacles) / CurrentBaseSpeed);
     private float CurrentObstacleSpeed => CurrentBaseSpeed * speedMultiplier;
     private float CurrentSpawnTime => CurrentBaseSpawnTime * spawnTimeMultiplier;
+
+
+    public float SpeedFactor => CurrentObstacleSpeed / baseObstacleSpeed;
+    public float CurrentSpeed => CurrentObstacleSpeed;
 
 
     public event UnityAction<float> OnSlowTimeChanged;
@@ -59,8 +64,7 @@ public class ObstacleSpawner : MonoBehaviour
                                                                                                // como obstacleToSpawn
         GameObject spawnedObstacle = Instantiate(obstacleToSpawn, transform.position, Quaternion.identity); //aqui este opstacleToSpawn se creara en nuestra escena en su posicion transform.position y con rotacion dada por el quaternion.identity 
 
-        Rigidbody2D obstacleRB = spawnedObstacle.GetComponent<Rigidbody2D>(); 
-        obstacleRB.linearVelocity = Vector2.left * CurrentObstacleSpeed; //le agregamos velocidad
+        spawnedObstacle.GetComponent<MoveWithWorld>().Init(this);
         //Debug.Log($"Velocidad aplicada: {CurrentObstacleSpeed}");
     }
     private float CalculateNextSpawnTime() //toma en cuenta mi velocidad actual para spawnear

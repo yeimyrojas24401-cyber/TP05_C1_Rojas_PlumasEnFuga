@@ -6,9 +6,9 @@ public class ParallaxController : MonoBehaviour
     [System.Serializable]
     public class ParallaxLayer
     {
-        public string name; // SOLO LA USO COMO IDENTIFICACION
+        public string name; 
         public float speed = 1f;
-        public List<Transform> tiles = new List<Transform>(); //guarda la referencia del Transform de cada tile
+        public List<Transform> tiles = new List<Transform>(); 
 
         public float recycleThresholdX = -29f; //posicion X (local) en la que un tile de esta capa se considera fuera de pantalla y entonces debe reciclarse
 
@@ -16,7 +16,7 @@ public class ParallaxController : MonoBehaviour
     }
 
     [SerializeField] private List<ParallaxLayer> parallaxLayer = new List<ParallaxLayer>();
-
+    [SerializeField] private ObstacleSpawner obstacleSpawner;
     private void Start()
     {
         foreach (var layer in parallaxLayer) //reordena
@@ -27,11 +27,12 @@ public class ParallaxController : MonoBehaviour
 
     private void Update()
     {
+        float factor = obstacleSpawner.SpeedFactor;
         foreach (var layer in parallaxLayer)
         {
             for (int i = 0; i < layer.tiles.Count; i++)
             {
-                layer.tiles[i].position += Vector3.left * (layer.speed * Time.deltaTime);
+                layer.tiles[i].position += Vector3.left * (layer.speed * factor * Time.deltaTime);
             }
             //sistema reciclado
             if (layer.tiles[0].localPosition.x < layer.recycleThresholdX)
@@ -58,7 +59,7 @@ public class ParallaxController : MonoBehaviour
 
         if (xA < xB)
         {
-            return -1; //esta x esta mas a la izquierda //signo negativo va primero
+            return -1;
         }
         if (xA > xB)
         {
