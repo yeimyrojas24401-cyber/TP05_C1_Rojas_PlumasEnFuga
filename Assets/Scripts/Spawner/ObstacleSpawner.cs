@@ -3,6 +3,9 @@ using UnityEngine.Events;
 
 public class ObstacleSpawner : MonoBehaviour
 {
+    [Header("WorldSpeedData")]
+    [SerializeField] private WorldSpeedSo worldSpeedData;
+    
     [Header("Prefabs")]
     [SerializeField] private GameObject[] obstaclePrefabs;
 
@@ -32,15 +35,12 @@ public class ObstacleSpawner : MonoBehaviour
     private float CurrentObstacleSpeed => CurrentBaseSpeed * speedMultiplier;
 
 
-    public float SpeedFactor => CurrentObstacleSpeed / baseObstacleSpeed;
-    public float CurrentSpeed => CurrentObstacleSpeed;
-
-
     public event UnityAction<float> OnSlowTimeChanged;
     public event UnityAction OnSlowEffectEnded;
 
     private void Awake() //1
     {
+        worldSpeedData.ResetSpeed(baseObstacleSpeed);
         currentSpawnTimeTarget = CalculateNextSpawnTime();
     }
 
@@ -59,6 +59,8 @@ public class ObstacleSpawner : MonoBehaviour
         elapsedTime += Time.deltaTime;
         UpdateSlowEffect();
         SpawnLoop();
+
+        worldSpeedData.SetCurrentSpeed(CurrentObstacleSpeed);
     }
 
     private void SpawnLoop() //4 decide
@@ -77,8 +79,6 @@ public class ObstacleSpawner : MonoBehaviour
         GameObject obstacleToSpawn = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)]; // da un numero indice ramdom en funcion del que se seleccionara el prefab y este prefab se quedara
                                                                                                // como obstacleToSpawn
         GameObject spawnedObstacle = Instantiate(obstacleToSpawn, transform.position, Quaternion.identity); //aqui este opstacleToSpawn se creara en nuestra escena en su posicion transform.position y con rotacion dada por el quaternion.identity 
-
-        spawnedObstacle.GetComponent<MoveWithWorld>().Init(this); //scrip ayuda para sincronizar mi velocidad
     }
 
     private float CalculateNextSpawnTime() // 2 toma en cuenta mi velocidad actual para spawnear

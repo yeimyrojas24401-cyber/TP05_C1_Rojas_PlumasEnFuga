@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class ParallaxController : MonoBehaviour
 {
+    [SerializeField] private WorldSpeedSo worldSpeedData;
     [SerializeField] private List<ParallaxLayer> parallaxLayer = new List<ParallaxLayer>();
-    [SerializeField] private ObstacleSpawner obstacleSpawner;
     private void Start()
     {
         foreach (var layer in parallaxLayer) //reordena
@@ -15,7 +15,7 @@ public class ParallaxController : MonoBehaviour
 
     private void Update()
     {
-        float factor = obstacleSpawner.SpeedFactor; //obstacle velocity
+        float factor = worldSpeedData.SpeedFactor; //obstacle velocity
         foreach (var layer in parallaxLayer)
         {
             for (int i = 0; i < layer.tiles.Count; i++)
