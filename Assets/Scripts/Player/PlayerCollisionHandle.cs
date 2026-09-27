@@ -16,6 +16,7 @@ public class PlayerCollisionHandle : MonoBehaviour
         if (collision.gameObject.GetComponent<ObstacleMarker>() != null)
             health.TakeHit(collision.gameObject);
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         PowerUp powerUp = other.GetComponentInParent<PowerUp>();

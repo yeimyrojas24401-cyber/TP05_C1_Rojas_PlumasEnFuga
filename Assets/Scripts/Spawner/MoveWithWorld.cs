@@ -9,10 +9,12 @@ public class MoveWithWorld : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
+
     public void Init(ObstacleSpawner obstacleSpawner)
     {
         spawner = obstacleSpawner; //guarda referencia de mi obstacleSpawner
     }
+
     private void FixedUpdate()
     {
         if (spawner == null) return;

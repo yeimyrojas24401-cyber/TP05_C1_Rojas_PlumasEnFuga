@@ -355,9 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f00aee7ab83144ea14ed34db699227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  startingLives: 1
-  maxLives: 3
-  invulnerabilityAfterHit: 1.5
+  data: {fileID: 11400000, guid: 467865f62c5694b4998a484d5150020e, type: 2}
 --- !u!1 &192094831
 GameObject:
   m_ObjectHideFlags: 0
@@ -9081,6 +9079,7 @@ MonoBehaviour:
   - {fileID: 986978887534945584, guid: 2612a7ad69fef4a458da9e925032fa10, type: 3}
   spawnTime: 15
   moveSpeed: 1
+  obstacleSpawner: {fileID: 483981657}
 --- !u!4 &1654035411
 Transform:
   m_ObjectHideFlags: 0
