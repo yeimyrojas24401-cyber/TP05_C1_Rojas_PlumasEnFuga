@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIDifficultyPanel : MonoBehaviour
 {
-    [SerializeField] private DifficultySelectorSo difficultyProfileData;
+    [SerializeField] private DifficultySelectorSo difficultySelector;
     [SerializeField] private DifficultySettingsSo easyDifficulty;
     [SerializeField] private DifficultySettingsSo hardDifficulty;
     [SerializeField] private Button btnEasy;
@@ -24,11 +23,11 @@ public class UIDifficultyPanel : MonoBehaviour
     }
     private void OnButtonEasyClicked()
     {
-        difficultyProfileData.SetDifficulty(easyDifficulty);
+        difficultySelector.SetDifficulty(easyDifficulty);
     }
 
     private void OnButtonHardClicked()
     {
-        difficultyProfileData.SetDifficulty(hardDifficulty);
+        difficultySelector.SetDifficulty(hardDifficulty);
     }
 }
