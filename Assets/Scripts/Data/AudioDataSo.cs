@@ -104,10 +104,10 @@ public class AudioDataSo : ScriptableObject
     }
     public void ApplyAllToMixer()
     {
-        mixer.SetFloat(MasterKey, Mathf.Log10(masterVolume) * 20f);
-        mixer.SetFloat(BackgroundKey, Mathf.Log10(backgroundVolume) * 20f);
-        mixer.SetFloat(SfxKey, Mathf.Log10(sfxVolume) * 20f);
-        mixer.SetFloat(UiKey, Mathf.Log10(uiVolume) * 20f);
+        ApplyToMixer(MasterKey, masterVolume);
+        ApplyToMixer(BackgroundKey, backgroundVolume);
+        ApplyToMixer(SfxKey, sfxVolume);
+        ApplyToMixer(UiKey, uiVolume);
     }
 
 }
