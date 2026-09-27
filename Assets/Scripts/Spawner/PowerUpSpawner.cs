@@ -4,7 +4,6 @@ public class PowerUpSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] powerUpPrefabs;
     [SerializeField] private float spawnTime = 30f;
-    [SerializeField] private float moveSpeed = 1f;
 
     [SerializeField] private ObstacleSpawner obstacleSpawner;
     private float timer;
