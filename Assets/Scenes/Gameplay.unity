@@ -5918,6 +5918,7 @@ GameObject:
   m_Component:
   - component: {fileID: 413594727}
   - component: {fileID: 413594726}
+  - component: {fileID: 413594729}
   - component: {fileID: 413594728}
   m_Layer: 0
   m_Name: GameManager
@@ -6059,6 +6060,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &413594729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413594725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20f21cc059bcf0b459b26d6956c5f199, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BiomeSelector
+  difficultySelector: {fileID: 11400000, guid: 2c82f7caca3da3a4d873fac5ba920838, type: 2}
+  biomes:
+  - {fileID: 495584643}
+  - {fileID: 2023000380}
 --- !u!1 &478604685
 GameObject:
   m_ObjectHideFlags: 0
@@ -6206,16 +6223,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff13e72c760a9f458dd84f1380cdacf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
+  difficultySelectorData: {fileID: 11400000, guid: 2c82f7caca3da3a4d873fac5ba920838, type: 2}
   worldSpeedData: {fileID: 11400000, guid: 787d65e218cfdeb4091637b6617fd4bc, type: 2}
   obstaclePrefabs:
   - {fileID: 6363293850746731292, guid: 51f7acd748cb5cd469d895a7e499da0e, type: 3}
   - {fileID: 4473581321068926153, guid: d3171781ba3dc274f8e75df5d51ce456, type: 3}
   - {fileID: 7230654774945197108, guid: 0476176a6b0fd864cad0057f0f0fad4f, type: 3}
-  baseObstacleSpeed: 5
-  speedIncreasePerSecond: 0.2
-  minSpawnTime: 2
-  minDistanceBetweenObstacles: 10
-  maxDistanceBetweenObstacles: 50
   slowSpeedFactor: 0.5
   slowSpawnTimeFactor: 1.5
 --- !u!1 &485916111
@@ -9916,11 +9929,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e2924d15a46e61468657ac10e07cd07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpSpawner
+  difficultySelectorData: {fileID: 11400000, guid: 2c82f7caca3da3a4d873fac5ba920838, type: 2}
   powerUpPrefabs:
   - {fileID: 9089249711366851349, guid: c721707e7a4d23741a4ab37285d947a6, type: 3}
   - {fileID: 5894685401699451098, guid: 0dd51f25dae9c77418c7dc11c52c3a16, type: 3}
   - {fileID: 986978887534945584, guid: 2612a7ad69fef4a458da9e925032fa10, type: 3}
-  spawnTime: 5
 --- !u!4 &1654035411
 Transform:
   m_ObjectHideFlags: 0
@@ -10922,14 +10935,14 @@ MonoBehaviour:
     recycleThresholdX: -29
     tileSpacing: 38.4
   - name: bg2Houses
-    speed: 1.2
+    speed: 1
     tiles:
     - {fileID: 1369966462}
     - {fileID: 229221022}
     recycleThresholdX: -29
     tileSpacing: 38.4
   - name: bg3Sidewalk
-    speed: 1.2
+    speed: 1
     tiles:
     - {fileID: 990761712}
     - {fileID: 651415423}
