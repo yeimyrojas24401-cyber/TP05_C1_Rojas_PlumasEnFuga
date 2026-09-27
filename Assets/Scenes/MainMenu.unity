@@ -528,6 +528,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 647395627}
+  - component: {fileID: 647395631}
   - component: {fileID: 647395630}
   - component: {fileID: 647395629}
   - component: {fileID: 647395628}
@@ -639,6 +640,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 647395626}
   m_CullTransparentMesh: 1
+--- !u!114 &647395631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647395626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc8314c9943a7c4fb54599b60435e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonClickSound
+  audioSource: {fileID: 989389463}
+  clickClip: {fileID: 8300000, guid: ee50ccad4cb30d748addd9a7275fce93, type: 3}
 --- !u!82 &989389463 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 1540378492777722605, guid: 232e42c6a8a5cda42a83076395e91f88, type: 3}
@@ -1463,6 +1478,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1940812004}
+  - component: {fileID: 1940812008}
   - component: {fileID: 1940812007}
   - component: {fileID: 1940812006}
   - component: {fileID: 1940812005}
@@ -1574,6 +1590,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940812003}
   m_CullTransparentMesh: 1
+--- !u!114 &1940812008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940812003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc8314c9943a7c4fb54599b60435e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonClickSound
+  audioSource: {fileID: 989389463}
+  clickClip: {fileID: 8300000, guid: ee50ccad4cb30d748addd9a7275fce93, type: 3}
 --- !u!1 &1996708173 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3171509159615322298, guid: 7c19de3a5207d794c879b43125d3342e, type: 3}
