@@ -7,7 +7,7 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private GameObject[] obstaclePrefabs;
 
     [Header("Base Difficulty")]
-    [SerializeField] private float baseObstacleSpeed = 10f;
+    [SerializeField] private float baseObstacleSpeed = 5f;
 
     [Header("Difficulty Ramp")]
     [SerializeField] private float speedIncreasePerSecond = 0.02f;
@@ -43,20 +43,24 @@ public class ObstacleSpawner : MonoBehaviour
     {
         currentSpawnTimeTarget = CalculateNextSpawnTime();
     }
+
+    private void OnEnable()
+    {
+        PowerUp.OnSlowPowerUpTaken += TriggerSlowEffect;
+    }
+
+    private void OnDisable()
+    {
+        PowerUp.OnSlowPowerUpTaken -= TriggerSlowEffect;
+    }
+
     private void Update()
     {
         elapsedTime += Time.deltaTime;
         UpdateSlowEffect();
         SpawnLoop();
     }
-    private void OnEnable()
-    {
-        PowerUp.OnSlowPowerUpTaken += TriggerSlowEffect;
-    }
-    private void OnDisable()
-    {
-        PowerUp.OnSlowPowerUpTaken -= TriggerSlowEffect;
-    }
+
     private void SpawnLoop() //decide
     {
         timeUntilObstacleSpawn += Time.deltaTime;
@@ -67,6 +71,7 @@ public class ObstacleSpawner : MonoBehaviour
             currentSpawnTimeTarget = CalculateNextSpawnTime();
         }
     }
+
     private void Spawn()
     {
         GameObject obstacleToSpawn = obstaclePrefabs[Random.Range(0, obstaclePrefabs.Length)]; // da un numero indice ramdom en funcion del que se seleccionara el prefab y este prefab se quedara
@@ -77,17 +82,20 @@ public class ObstacleSpawner : MonoBehaviour
 
         //Debug.Log($"Velocidad aplicada: {CurrentObstacleSpeed}");
     }
+
     private float CalculateNextSpawnTime() //toma en cuenta mi velocidad actual para spawnear
     {
         float randomDistance = Random.Range(minDistanceBetweenObstacles, maxDistanceBetweenObstacles);
         return Mathf.Max(minSpawnTime, randomDistance / CurrentBaseSpeed);
     }
+
     private void TriggerSlowEffect(float duration)
     {
         speedMultiplier = slowSpeedFactor;
         spawnTimeMultiplier = slowSpawnTimeFactor;
         slowTimer = duration;
     }
+
     private void UpdateSlowEffect()
     {
         if (slowTimer <= 0f) return;

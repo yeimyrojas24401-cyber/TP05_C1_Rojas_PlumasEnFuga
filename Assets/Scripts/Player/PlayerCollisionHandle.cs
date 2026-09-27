@@ -22,7 +22,7 @@ public class PlayerCollisionHandle : MonoBehaviour
 
         if (powerUp != null)
         {
-            powerUp.DoAction(gameObject);
+            powerUp.DoAction(health);
 
             if (powerUp.PickupClip != null)
                 audioSource.PlayOneShot(powerUp.PickupClip);

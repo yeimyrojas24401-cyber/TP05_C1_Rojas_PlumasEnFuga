@@ -17,9 +17,8 @@ public class PowerUp : MonoBehaviour
     [SerializeField] private AudioClip pickupClip;
 
     public AudioClip PickupClip => pickupClip;
-    public void DoAction(GameObject player)
+    public void DoAction(PlayerHealth player)
     {
-        Debug.Log($"DoAction ejecutado, tipo: {powerUpType}");
 
         switch (powerUpType) //nota nunca un powerUpsera none ni last ni default sin embargo lo dejamos
         {
@@ -27,11 +26,11 @@ public class PowerUp : MonoBehaviour
                 break;
 
             case PowerUpType.Life:
-                player.GetComponent<PlayerHealth>().AddLife();
+                player.AddLife();
                 break;
 
             case PowerUpType.Invencibility:
-                player.GetComponent<PlayerHealth>().SetInvincible(duration);
+                player.SetInvincible(duration);
                 break;
 
             case PowerUpType.Slow:
