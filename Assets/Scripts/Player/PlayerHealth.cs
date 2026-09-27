@@ -3,21 +3,19 @@ using UnityEngine.Events;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private int startingLives = 1;
-    [SerializeField] private int maxLives = 3;
-    [SerializeField] private float invulnerabilityAfterHit = 1.5f;
+    [SerializeField] private PlayerDataSo data;
 
     public int CurrentLives { get; private set; }
-    public int MaxLives => maxLives;
+    public int MaxLives => data.maxLives;
     public bool IsInvincible => invincibleTimer > 0f;
 
     private float invincibleTimer;
 
-    public UnityAction<int> OnLivesChanged;
+    public event UnityAction<int> OnLivesChanged;
 
     private void Awake()
     {
-        CurrentLives = Mathf.Clamp(startingLives, 1, maxLives);
+        CurrentLives = Mathf.Clamp(data.startingLives, 1, data.maxLives);
     }
 
     private void Update()
@@ -28,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void AddLife(int amount = 1)
     {
-        CurrentLives = Mathf.Min(CurrentLives + amount, maxLives);
+        CurrentLives = Mathf.Min(CurrentLives + amount, data.maxLives);
         OnLivesChanged?.Invoke(CurrentLives);
     }
 
@@ -53,6 +51,6 @@ public class PlayerHealth : MonoBehaviour
         }
 
         Destroy(obstacle);
-        invincibleTimer = invulnerabilityAfterHit;
+        invincibleTimer = data.invulnerabilityAfterHit;
     }
 }

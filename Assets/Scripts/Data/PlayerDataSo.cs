@@ -25,4 +25,9 @@ public class PlayerDataSo : ScriptableObject
     [Header("Crouch Collider")]
     public Vector2 crouchColliderSize;
     public Vector2 crouchColliderOffset;
+
+    [Header("Health")]
+    public int startingLives = 1;
+    public int maxLives = 3;
+    public float invulnerabilityAfterHit = 1.5f;
 }
