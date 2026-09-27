@@ -48,6 +48,7 @@ public class UIMainMenu : MonoBehaviour
         btnPlay.onClick.RemoveAllListeners();
         //btnSettings.onClick.RemoveAllListeners();
         btnAudio.onClick.RemoveAllListeners();
+        btnCredits.onClick.RemoveAllListeners();
         btnExit.onClick.RemoveAllListeners();
     }
     private void OnPlayClicked()
