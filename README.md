@@ -85,8 +85,8 @@ All volume is configurable from the Audio panel and persists between sessions. I
 
 ## Credits
 
-* Game Dev / Game Designer / SFX / Pixel Artist assistant jeje - Yeimy Rojas.
-* Game Designer / Pixel Artist Lead - Aurora Salazar.
+* Game Dev / Game Designer / SFX / Pixel Artist assistant jeje / Media Artist - Yeimy Rojas.
+* Game Designer / Pixel Artist Lead / Pixel Animator - Aurora Salazar.
 
 
 ## Notes
