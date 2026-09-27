@@ -1,16 +1,34 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIDifficultyPanel : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private DifficultySelectorSo difficultyProfileData;
+    [SerializeField] private DifficultySettingsSo easyDifficulty;
+    [SerializeField] private DifficultySettingsSo hardDifficulty;
+    [SerializeField] private Button btnEasy;
+    [SerializeField] private Button btnHard;
+
+    private void Awake()
     {
-        
+        btnEasy.onClick.AddListener(OnButtonEasyClicked);
+        btnHard.onClick.AddListener(OnButtonHardClicked);
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void OnDestroy()
     {
-        
+        btnEasy.onClick.RemoveAllListeners();
+        btnHard.onClick.RemoveAllListeners();
+    }
+    private void OnButtonEasyClicked()
+    {
+        difficultyProfileData.SetDifficulty(easyDifficulty);
+    }
+
+    private void OnButtonHardClicked()
+    {
+        difficultyProfileData.SetDifficulty(hardDifficulty);
     }
 }
