@@ -11,7 +11,7 @@ public class MoveWithWorld : MonoBehaviour
     }
     public void Init(ObstacleSpawner obstacleSpawner)
     {
-        spawner = obstacleSpawner;
+        spawner = obstacleSpawner; //guarda referencia de mi obstacleSpawner
     }
     private void FixedUpdate()
     {
