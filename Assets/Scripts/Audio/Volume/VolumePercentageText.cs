@@ -3,19 +3,11 @@ using UnityEngine;
 
 public class VolumePercentageText : MonoBehaviour
 {
-    private enum Channel
-    {
-        Master,
-        Background,
-        SFX, 
-        UI
-    }
-
     [Header("Data")]
     [SerializeField] private AudioDataSo data;
 
-    [Header("Config")]
-    [SerializeField] private Channel channel;
+    [Header("ChannelsEnum")]
+    [SerializeField] private AudioChannel channel;
 
     [Header("Visuals")]
     [SerializeField] private TMP_Text percentageText;
@@ -26,16 +18,16 @@ public class VolumePercentageText : MonoBehaviour
 
         switch (channel)
         {
-            case Channel.Master:
+            case AudioChannel.Master:
                 data.OnMasterVolumeChanged += UpdateText;
                 break;
-            case Channel.Background:
+            case AudioChannel.Background:
                 data.OnBackgroundVolumeChanged += UpdateText;
                 break;
-            case Channel.SFX:
+            case AudioChannel.SFX:
                 data.OnSfxVolumeChanged += UpdateText;
                 break;
-            case Channel.UI:
+            case AudioChannel.UI:
                 data.OnUiVolumeChanged += UpdateText;
                 break;
         }
@@ -45,16 +37,16 @@ public class VolumePercentageText : MonoBehaviour
     {
         switch (channel)
         {
-            case Channel.Master:
+            case AudioChannel.Master:
                 data.OnMasterVolumeChanged -= UpdateText;
                 break;
-            case Channel.Background:
+            case AudioChannel.Background:
                 data.OnBackgroundVolumeChanged -= UpdateText;
                 break;
-            case Channel.SFX:
+            case AudioChannel.SFX:
                 data.OnSfxVolumeChanged -= UpdateText;
                 break;
-            case Channel.UI:
+            case AudioChannel.UI:
                 data.OnUiVolumeChanged -= UpdateText;
                 break;
         }
@@ -70,10 +62,10 @@ public class VolumePercentageText : MonoBehaviour
     {
         switch (channel)
         {
-            case Channel.Master: return data.MasterVolume;
-            case Channel.Background: return data.BackgroundVolume;
-            case Channel.SFX: return data.SfxVolume;
-            case Channel.UI: return data.UiVolume;
+            case AudioChannel.Master: return data.MasterVolume;
+            case AudioChannel.Background: return data.BackgroundVolume;
+            case AudioChannel.SFX: return data.SfxVolume;
+            case AudioChannel.UI: return data.UiVolume;
             default: return 1f;
         }
     }

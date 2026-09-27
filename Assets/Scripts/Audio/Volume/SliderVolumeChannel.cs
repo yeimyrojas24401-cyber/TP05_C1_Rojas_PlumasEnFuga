@@ -1,22 +1,14 @@
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class SliderVolumeChannel : MonoBehaviour
 {
-    private enum Channel
-    {
-        Master,
-        Background,
-        SFX, UI
-    }
 
     [Header("Data")]
     [SerializeField] private AudioDataSo data;
-    [SerializeField] private AudioMixer mixer;
 
-    [Header("Config")]
-    [SerializeField] private Channel channel;
+    [Header("ChannelsEnum")]
+    [SerializeField] private AudioChannel channel;
 
     private Slider sliderVolume;
 
@@ -39,16 +31,16 @@ public class SliderVolumeChannel : MonoBehaviour
     {
         switch (channel)
         {
-            case Channel.Master:
+            case AudioChannel.Master:
                 data.SetMasterVolume(value);
                 break;
-            case Channel.Background:
+            case AudioChannel.Background:
                 data.SetBackgroundVolume(value);
                 break;
-            case Channel.SFX:
+            case AudioChannel.SFX:
                 data.SetSfxVolume(value);
                 break;
-            case Channel.UI:
+            case AudioChannel.UI:
                 data.SetUiVolume(value);
                 break;
         }
@@ -59,10 +51,10 @@ public class SliderVolumeChannel : MonoBehaviour
     {
         switch (channel)
         {
-            case Channel.Master: return data.MasterVolume;
-            case Channel.Background: return data.BackgroundVolume;
-            case Channel.SFX: return data.SfxVolume;
-            case Channel.UI: return data.UiVolume;
+            case AudioChannel.Master: return data.MasterVolume;
+            case AudioChannel.Background: return data.BackgroundVolume;
+            case AudioChannel.SFX: return data.SfxVolume;
+            case AudioChannel.UI: return data.UiVolume;
             default: return 1f;
         }
     }
