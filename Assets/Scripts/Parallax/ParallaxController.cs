@@ -3,18 +3,6 @@ using UnityEngine;
 
 public class ParallaxController : MonoBehaviour
 {
-    [System.Serializable]
-    public class ParallaxLayer
-    {
-        public string name; 
-        public float speed = 1f;
-        public List<Transform> tiles = new List<Transform>(); 
-
-        public float recycleThresholdX = -29f; //posicion X (local) en la que un tile de esta capa se considera fuera de pantalla y entonces debe reciclarse
-
-        public float tileSpacing = 38.4f; //cuando se le debe sumar en X para reciclar el tile lo obtuve retando 48.4 (valor en x del tile fuera de camara) menos 10 valor de X en el tile de la camara
-    }
-
     [SerializeField] private List<ParallaxLayer> parallaxLayer = new List<ParallaxLayer>();
     [SerializeField] private ObstacleSpawner obstacleSpawner;
     private void Start()

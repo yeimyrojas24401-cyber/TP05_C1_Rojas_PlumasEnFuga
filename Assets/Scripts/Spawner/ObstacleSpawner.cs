@@ -11,7 +11,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     [Header("Difficulty Ramp")]
     [SerializeField] private float speedIncreasePerSecond = 0.02f;
-    [SerializeField] private float minSpawnTime = 0.6f; //tiempo limite de spawneo con power
+    [SerializeField] private float minSpawnTime = 0.6f; //tiempo limite de spawneo entre obstaculos
     [SerializeField] private float minDistanceBetweenObstacles = 20f;
     [SerializeField] private float maxDistanceBetweenObstacles = 50f;
 
@@ -29,9 +29,7 @@ public class ObstacleSpawner : MonoBehaviour
     private float slowTimer;
 
     private float CurrentBaseSpeed => baseObstacleSpeed + (elapsedTime * speedIncreasePerSecond);
-    private float CurrentBaseSpawnTime => Mathf.Max(minSpawnTime, Random.Range(minDistanceBetweenObstacles, maxDistanceBetweenObstacles) / CurrentBaseSpeed);
     private float CurrentObstacleSpeed => CurrentBaseSpeed * speedMultiplier;
-    private float CurrentSpawnTime => CurrentBaseSpawnTime * spawnTimeMultiplier;
 
 
     public float SpeedFactor => CurrentObstacleSpeed / baseObstacleSpeed;
