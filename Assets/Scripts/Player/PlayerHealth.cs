@@ -10,8 +10,10 @@ public class PlayerHealth : MonoBehaviour
     public bool IsInvincible => invincibleTimer > 0f;
 
     private float invincibleTimer;
+    private float powerUpTimer;
 
     public event UnityAction<int> OnLivesChanged;
+    public event UnityAction<float> OnInvincibleTimeChanged;
     public event UnityAction OnDied;
 
     private void Awake()
@@ -23,6 +25,11 @@ public class PlayerHealth : MonoBehaviour
     {
         if (invincibleTimer > 0f)
             invincibleTimer -= Time.deltaTime;
+        if (powerUpTimer > 0f)
+        {
+            powerUpTimer -= Time.deltaTime;
+            OnInvincibleTimeChanged?.Invoke(Mathf.Max(powerUpTimer, 0f));
+        }
     }
 
     public void AddLife(int amount = 1)
@@ -34,6 +41,7 @@ public class PlayerHealth : MonoBehaviour
     public void SetInvincible(float duration)
     {
         invincibleTimer = Mathf.Max(invincibleTimer, duration);
+        powerUpTimer = Mathf.Max(powerUpTimer, duration);
     }
 
     public void TakeHit(GameObject obstacle)
