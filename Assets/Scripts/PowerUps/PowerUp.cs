@@ -17,7 +17,8 @@ public class PowerUp : MonoBehaviour
     [SerializeField] private AudioClip pickupClip;
 
     public AudioClip PickupClip => pickupClip;
-    public void DoAction(PlayerHealth player)
+
+    public void DoAction(PlayerHealth playerHealth)
     {
 
         switch (powerUpType) //nota nunca un powerUpsera none ni last ni default sin embargo lo dejamos
@@ -26,11 +27,11 @@ public class PowerUp : MonoBehaviour
                 break;
 
             case PowerUpType.Life:
-                player.AddLife();
+                playerHealth.AddLife();
                 break;
 
             case PowerUpType.Invencibility:
-                player.SetInvincible(duration);
+                playerHealth.SetInvincible(duration);
                 break;
 
             case PowerUpType.Slow:

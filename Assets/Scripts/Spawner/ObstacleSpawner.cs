@@ -34,7 +34,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void Awake() //1
     {
-        difficultyData = difficultySelectorData.CurrentDifficulty; // primero: los demás la usan
+        difficultyData = difficultySelectorData.CurrentDifficulty; // aqui se usa difficultyData como una referencia al asset
         worldSpeedData.ResetSpeed(difficultyData.BaseWorldSpeed);
         currentSpawnTimeTarget = CalculateNextSpawnTime();
     }
